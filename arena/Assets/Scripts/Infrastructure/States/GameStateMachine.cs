@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Infrastructure.DI;
 using Infrastructure.States.Interfaces;
 
 namespace Infrastructure.States
@@ -12,11 +13,11 @@ namespace Infrastructure.States
         private readonly Dictionary<Type, IExitableState> _states;
         private IExitableState _activeState;
 
-        public GameStateMachine()
+        public GameStateMachine(DiContainer container)
         {
             _states = new Dictionary<Type, IExitableState>
             {
-                [typeof(BootstrapState)] = new BootstrapState(this),
+                [typeof(BootstrapState)] = new BootstrapState(this, container),
                 [typeof(LoadLevelState)] = new LoadLevelState(this),
                 [typeof(GameLoopState)] = new GameLoopState()
             };

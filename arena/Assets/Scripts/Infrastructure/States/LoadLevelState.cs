@@ -1,5 +1,6 @@
 ﻿using Infrastructure.DI.Services.Factory;
 using Infrastructure.States.Interfaces;
+using Movement;
 using Player;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ namespace Infrastructure.States
     {
         private readonly GameStateMachine _stateMachine;
         private readonly IGameFactory _gameFactory;
+        private readonly Transform _playerTransform;
         
         public LoadLevelState(GameStateMachine stateMachine, IGameFactory gameFactory)
         {
@@ -33,12 +35,23 @@ namespace Infrastructure.States
 
             GameObject player = CreatePlayer();
             CameraFollow(player);
+
+            CreateEnemy(player.transform);
         }
 
         private GameObject CreatePlayer()
         {
             GameObject gameObject = _gameFactory.CreatePlayer(Vector3.zero);
             return gameObject;
+        }
+
+        private void CreateEnemy(Transform playerTransform)
+        {
+            Vector3 position = Vector3.zero;
+            position.x = -4.5f;
+
+            GameObject enemy = _gameFactory.CreateEnemy(position);
+            enemy.GetComponent<EnemyMovement>().Construct(playerTransform);
         }
 
         private void CameraFollow(GameObject following)

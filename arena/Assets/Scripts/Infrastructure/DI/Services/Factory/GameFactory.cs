@@ -17,9 +17,14 @@ namespace Infrastructure.DI.Services.Factory
             return _assets.Instantiate(AsstetsPath.PlayerPrefabPath, at);
         }
 
-        public GameObject CreateEnemy(Vector3 at)
+        public GameObject CreateEnemy(Vector3 at, string assetsPath)
         {
-            return _assets.Instantiate(AsstetsPath.SkeletonWarriorPrefabPath, at);
+            return _assets.Instantiate(assetsPath, at);
+        }
+
+        public GameObject CreateSpawner(Vector3 at)
+        {
+            return _assets.Instantiate(AsstetsPath.SpawnerPrefabPath, at);
         }
     }
 }

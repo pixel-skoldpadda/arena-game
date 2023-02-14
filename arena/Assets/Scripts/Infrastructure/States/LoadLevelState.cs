@@ -1,7 +1,7 @@
 ﻿using Infrastructure.DI.Services.Factory;
 using Infrastructure.States.Interfaces;
-using Movement;
 using Player;
+using Spawner;
 using UnityEngine;
 
 namespace Infrastructure.States
@@ -13,7 +13,6 @@ namespace Infrastructure.States
     {
         private readonly GameStateMachine _stateMachine;
         private readonly IGameFactory _gameFactory;
-        private readonly Transform _playerTransform;
         
         public LoadLevelState(GameStateMachine stateMachine, IGameFactory gameFactory)
         {
@@ -35,25 +34,27 @@ namespace Infrastructure.States
 
             GameObject player = CreatePlayer();
             CameraFollow(player);
-
-            CreateEnemy(player.transform);
+            CreateSpawners(player.transform);
         }
 
+        private void CreateSpawners(Transform playerTransform)
+        {
+            GameObject[] markers = GameObject.FindGameObjectsWithTag("Spawner");
+            foreach (GameObject marker in markers)
+            {
+                SpawnerMarker spawnerMarker = marker.GetComponent<SpawnerMarker>();
+                EnemySpawner enemySpawner = _gameFactory.CreateSpawner(marker.transform.position).GetComponent<EnemySpawner>();
+                enemySpawner.Construct(_gameFactory, playerTransform.transform, spawnerMarker.EnemyType);
+                enemySpawner.SpawnEnemy();
+            }
+        }
+        
         private GameObject CreatePlayer()
         {
             GameObject gameObject = _gameFactory.CreatePlayer(Vector3.zero);
             return gameObject;
         }
-
-        private void CreateEnemy(Transform playerTransform)
-        {
-            Vector3 position = Vector3.zero;
-            position.x = -4.5f;
-
-            GameObject enemy = _gameFactory.CreateEnemy(position);
-            enemy.GetComponent<EnemyMovement>().Construct(playerTransform);
-        }
-
+        
         private void CameraFollow(GameObject following)
         {
             Camera.main.GetComponent<CameraFollow>().Follow(following.transform);

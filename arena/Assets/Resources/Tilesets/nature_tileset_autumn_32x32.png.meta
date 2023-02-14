@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -1576,7 +1576,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      nature_tileset_autumn_32x32_11: 1960832477
+      nature_tileset_autumn_32x32_65: -990172810
       nature_tileset_autumn_32x32_32: 1136430563
       nature_tileset_autumn_32x32_41: -259968871
       nature_tileset_autumn_32x32_8: -1664297755
@@ -1643,8 +1643,8 @@ TextureImporter:
       nature_tileset_autumn_32x32_29: -707136343
       nature_tileset_autumn_32x32_31: 393179159
       nature_tileset_autumn_32x32_19: 2059092981
-      nature_tileset_autumn_32x32_65: -990172810
       nature_tileset_autumn_32x32_68: -194401681
+      nature_tileset_autumn_32x32_11: 1960832477
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Player
+namespace Components.Player
 {
     public class CameraFollow : MonoBehaviour
     {

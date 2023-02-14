@@ -1,6 +1,6 @@
-﻿using Infrastructure;
+﻿using Components.Movement;
+using Infrastructure;
 using Infrastructure.DI.Services.Factory;
-using Movement;
 using UnityEngine;
 
 namespace Spawner

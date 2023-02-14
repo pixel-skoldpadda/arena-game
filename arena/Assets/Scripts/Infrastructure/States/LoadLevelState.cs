@@ -1,6 +1,6 @@
-﻿using Infrastructure.DI.Services.Factory;
+﻿using Components.Player;
+using Infrastructure.DI.Services.Factory;
 using Infrastructure.States.Interfaces;
-using Player;
 using Spawner;
 using UnityEngine;
 

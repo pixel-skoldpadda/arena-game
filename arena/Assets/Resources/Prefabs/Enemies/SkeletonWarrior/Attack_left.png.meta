@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e1f4aaba2c20bf24590ff2b40ada86ee
+guid: aa70e803cadc69e41bedd49cabb93252
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,13 +117,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Move_left_0
+      name: Attack_left_0
       rect:
         serializedVersion: 2
-        x: 26
+        x: 25
         y: 0
-        width: 19
-        height: 32
+        width: 64
+        height: 57
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e3e1ebb21a33d1a458a57a7b01c92110
-      internalID: -1012601770
+      spriteID: b7c4ad25ca680c04b99c4f8f9590b1f0
+      internalID: 1824826533
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Move_left_1
+      name: Attack_left_4
       rect:
         serializedVersion: 2
-        x: 74
+        x: 140
         y: 0
-        width: 15
-        height: 33
+        width: 77
+        height: 58
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,20 +152,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 29cd388fa1f1bd949bfe56600ad69468
-      internalID: 1293304661
+      spriteID: f17f2be662af5594c92430c2db6d1345
+      internalID: 464131060
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Move_left_2
+      name: Attack_left_5
       rect:
         serializedVersion: 2
-        x: 116
+        x: 308
         y: 0
-        width: 27
-        height: 33
+        width: 46
+        height: 70
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,20 +173,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 74b46559af5073042b3ae97a55464281
-      internalID: 49633798
+      spriteID: 3f9a08da94a2fea45b87c70fdbd13eeb
+      internalID: -184688598
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Move_left_3
+      name: Attack_left_6
       rect:
         serializedVersion: 2
-        x: 167
+        x: 428
         y: 0
-        width: 20
-        height: 32
+        width: 60
+        height: 75
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,50 +194,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 52dafa341e136814680080999c3b07ff
-      internalID: 1751642503
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Move_left_4
-      rect:
-        serializedVersion: 2
-        x: 218
-        y: 0
-        width: 14
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 19ebf2b6eb8940f4a9660bb18304b652
-      internalID: -907570751
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Move_left_5
-      rect:
-        serializedVersion: 2
-        x: 266
-        y: 0
-        width: 19
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9fc22045fb866d442ab2023ebf1037af
-      internalID: 186706251
+      spriteID: 3455395d2d9725247880f129448b0459
+      internalID: 1308982650
       vertices: []
       indices: 
       edges: []
@@ -245,7 +203,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 67d4bd45cd3eac745967eefffd333fa8
+    spriteID: 168edd2a96eb8ec4eb74d380ab18fb16
     internalID: 0
     vertices: []
     indices: 
@@ -253,12 +211,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Move_left_1: 1293304661
-      Move_left_5: 186706251
-      Move_left_3: 1751642503
-      Move_left_0: -1012601770
-      Move_left_4: -907570751
-      Move_left_2: 49633798
+      Attack_left_3: -1995978079
+      Attack_left_1: 661302395
+      Attack_left_5: -184688598
+      Attack_left_0: 1824826533
+      Attack_left_6: 1308982650
+      Attack_left_2: -1481164396
+      Attack_left_4: 464131060
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

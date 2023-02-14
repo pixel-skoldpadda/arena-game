@@ -2,7 +2,7 @@
 using Infrastructure.DI.Services.Input;
 using UnityEngine;
 
-namespace Movement
+namespace Components.Movement
 {
     public class PlayerMovement : Movement
     {

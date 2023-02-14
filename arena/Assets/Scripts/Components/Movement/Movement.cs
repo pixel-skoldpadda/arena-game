@@ -1,20 +1,15 @@
-﻿using System.Numerics;
-using UnityEngine;
+﻿using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
 
-namespace Movement
+namespace Components.Movement
 {
-    [RequireComponent(typeof(Animator), typeof(Rigidbody2D))]
+    [RequireComponent(typeof(Rigidbody2D))]
     public abstract class Movement : MonoBehaviour
     {
-        private static readonly int Horizontal = Animator.StringToHash("Horizontal");
-        private static readonly int Vertical = Animator.StringToHash("Vertical");
-        private static readonly int  Speed = Animator.StringToHash("Speed");
-    
         [SerializeField] private Rigidbody2D body2D;
-        [SerializeField] private Animator animator;
         [SerializeField] private float speed;
-
+        [SerializeField] private AnimatorWrapper animator;
+        
         private Vector2 _axis;
 
         protected abstract Vector2 GetAxis();
@@ -22,10 +17,7 @@ namespace Movement
         protected virtual void Update()
         {
             _axis = GetAxis();
-        
-            animator.SetFloat(Horizontal, _axis.x);
-            animator.SetFloat(Vertical, _axis.y);
-            animator.SetFloat(Speed, _axis.magnitude);
+            animator.SetAxis(_axis);
         }
 
         protected void FixedUpdate()

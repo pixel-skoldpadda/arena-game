@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -3316,9 +3316,9 @@ TextureImporter:
       nature_tileset_32x32_71: 1774119674
       nature_tileset_32x32_98: -2118970265
       nature_tileset_32x32_140: -1709211275
-      nature_tileset_32x32_126: -1365033414
-      nature_tileset_32x32_39: -2008946102
       nature_tileset_32x32_61: -527911247
+      nature_tileset_32x32_39: -2008946102
+      nature_tileset_32x32_126: -1365033414
       nature_tileset_32x32_26: -1370478529
       nature_tileset_32x32_117: -534071489
       nature_tileset_32x32_65: 79926690

@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 
-namespace Movement
+namespace Components.Movement
 {
     public class EnemyMovement : Movement
     {
         [SerializeField] private float minDistance;
-        
+
         private Transform _playerTransform;
 
         public void Construct(Transform playerTransform)

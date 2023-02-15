@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections;
+using Components.Enemy;
 using Components.Movement;
 using UnityEngine;
 
 namespace Components
 {
-    [RequireComponent(typeof(Health), typeof(EnemyMovement), typeof(AnimatorWrapper))]
+    [RequireComponent(typeof(EnemyHealth), typeof(EnemyMovement), typeof(AnimatorWrapper))]
     public class EnemyDeath : MonoBehaviour
     {
-        [SerializeField] private Health health;
+        [SerializeField] private EnemyHealth health;
         [SerializeField] private EnemyMovement movement;
         [SerializeField] private AnimatorWrapper animator;
-
+        
         public Action OnDie;
     
         private void Start()

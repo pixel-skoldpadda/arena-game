@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Infrastructure.DI.Services.Factory;
+using UnityEngine;
 
 namespace Components
 {
@@ -10,12 +11,12 @@ namespace Components
         
         private float _attackRadius;
         private float _attackCooldown;
-        private float _damage;
+        private int _damage;
 
         private readonly Collider2D[] _hits = new Collider2D[8];
         private int _layerMask;
         private float _cooldown;
-
+        
         private void Awake()
         {
             _layerMask = 1 << LayerMask.NameToLayer(physicsLayerName);
@@ -60,7 +61,7 @@ namespace Components
             var size = Hit();
             for (int i = 0; i < size; i++)
             {
-                _hits[i].transform.parent.GetComponent<Health>().TakeDamage(_damage);
+                _hits[i].transform.parent.GetComponent<IHealth>().TakeDamage(_damage);
             }
         }
         
@@ -83,7 +84,7 @@ namespace Components
             }
         }
 
-        public float Damage
+        public int Damage
         {
             set => _damage = value;
         }

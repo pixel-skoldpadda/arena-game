@@ -59,8 +59,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.30840534, b: 0.5849056, a: 1}
-  m_RaycastTarget: 1
+  m_Color: {r: 0.7075472, g: 0.050994392, b: 0, a: 1}
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -91,8 +91,8 @@ GameObject:
   - component: {fileID: 4363880007610057644}
   - component: {fileID: 7226570895017107898}
   - component: {fileID: 4363880007610057645}
-  - component: {fileID: 6496319825386418001}
   - component: {fileID: 3381480011154184056}
+  - component: {fileID: 5477298925076794091}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -252,23 +252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body2D: {fileID: 4363880007610057643}
-  speed: 1.5
   animator: {fileID: 7226570895017107898}
---- !u!114 &6496319825386418001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4363880007610057646}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f17cf5c8504496d8d91873b4075e6f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  progressBar: {fileID: 3032789143228318150}
-  max: 100
-  current: 100
 --- !u!114 &3381480011154184056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,11 +265,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff6463673e1f4bb68818a19b3bac5451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRadius: 0.35
   physicsLayerName: Enemy
-  attackCooldown: 3
-  damage: 50
   animator: {fileID: 7226570895017107898}
+--- !u!114 &5477298925076794091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4363880007610057646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6180bf3ba8a40d78f7d7e8afd90d69d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  progressBar: {fileID: 3032789143228318150}
 --- !u!1 &6138506523463345549
 GameObject:
   m_ObjectHideFlags: 0
@@ -347,7 +341,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -447,8 +441,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: -0.345}
-  m_SizeDelta: {x: 0.45, y: 0.035}
+  m_AnchoredPosition: {x: 0, y: -0.37}
+  m_SizeDelta: {x: 0.5, y: 0.08}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &9219141170538961097
 Canvas:

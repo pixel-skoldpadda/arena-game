@@ -1,3 +1,4 @@
+using Components;
 using Items;
 using UnityEngine;
 
@@ -9,5 +10,6 @@ namespace Infrastructure.DI.Services.Factory
         GameObject CreateEnemy(EnemyType type, Transform parent);
         GameObject CreateSpawner(Vector3 at);
         GameObject CreateXp(Vector3 at);
+        FloatingText CreateFloatingText(Transform parent);
     }
 }

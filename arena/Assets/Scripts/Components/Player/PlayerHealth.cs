@@ -2,9 +2,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Components
+namespace Components.Player
 {
-    public class Health : MonoBehaviour
+    public class PlayerHealth : MonoBehaviour, IHealth
     {
         [SerializeField] private Image progressBar;
         private float _maxHp;
@@ -12,13 +12,13 @@ namespace Components
 
         public event Action HealthChanged;
 
-        public void TakeDamage(float damage)
+        public void TakeDamage(int damage)
         {
             _current -= damage;
             HealthChanged?.Invoke();
             progressBar.fillAmount = _current / _maxHp;
         }
-
+        
         public float Current => _current;
 
         public float MaxHp

@@ -1,4 +1,5 @@
 ﻿using Components;
+using Components.Enemy;
 using Components.Movement;
 using Infrastructure.DI.Services.AssetsManagement;
 using Infrastructure.DI.Services.Items.Items;
@@ -33,7 +34,7 @@ namespace Infrastructure.DI.Services.Factory
             attack.AttackRadius = characterItem.attackRadius;
             attack.Damage = characterItem.damage;
 
-            Health health = _playerGameObject.GetComponent<Health>();
+            IHealth health = _playerGameObject.GetComponent<IHealth>();
             health.MaxHp = characterItem.health;
             
             return _playerGameObject;
@@ -55,15 +56,17 @@ namespace Infrastructure.DI.Services.Factory
             attack.AttackRadius = enemyItem.attackRadius;
             attack.Damage = enemyItem.damage;
 
-            Health health = enemy.GetComponent<Health>();
+            EnemyHealth health = enemy.GetComponent<EnemyHealth>();
+            health.Construct(this);
             health.MaxHp = enemyItem.health;
 
             return enemy;
         }
 
-        public GameObject CreateEnemy(Vector3 at, string assetsPath)
+        public FloatingText CreateFloatingText(Transform parent)
         {
-            return _assets.Instantiate(assetsPath, at);
+            GameObject gameObject = _assets.Instantiate(AssetsPath.FloatingText, parent);
+            return gameObject.GetComponent<FloatingText>();
         }
 
         public GameObject CreateSpawner(Vector3 at)

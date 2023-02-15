@@ -9,5 +9,11 @@ namespace Infrastructure.DI.Services.AssetsManagement
             GameObject prefab = Resources.Load<GameObject>(path);
             return Object.Instantiate(prefab, at, Quaternion.identity);
         }
+
+        public GameObject Instantiate(string path, Transform parent)
+        {
+            GameObject prefab = Resources.Load<GameObject>(path);
+            return Object.Instantiate(prefab, parent.position, Quaternion.identity, parent);
+        }
     }
 }

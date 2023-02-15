@@ -10,8 +10,8 @@ namespace Items
         [Range(1, 500)]
         public int health;
         
-        [Range(1f, 100f)]
-        public float damage;
+        [Range(1, 100)]
+        public int damage;
 
         [Range(1f, 10f)]
         public float attackCooldown;

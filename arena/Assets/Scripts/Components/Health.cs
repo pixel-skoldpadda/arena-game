@@ -10,15 +10,15 @@ namespace Components
         [SerializeField] protected float max;
         [SerializeField] protected float current;
 
-        private event Action _healthChanged;
+        public event Action HealthChanged;
 
         public void TakeDamage(float damage)
         {
             current -= damage;
-            _healthChanged?.Invoke();
+            HealthChanged?.Invoke();
             progressBar.fillAmount = current / max;
         }
 
-        private Action HealthChanged => _healthChanged;
+        public float Current => current;
     }
 }

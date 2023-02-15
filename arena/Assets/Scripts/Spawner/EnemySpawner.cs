@@ -1,4 +1,5 @@
-﻿using Components.Movement;
+﻿using Components;
+using Components.Movement;
 using Infrastructure;
 using Infrastructure.DI.Services.Factory;
 using UnityEngine;
@@ -22,16 +23,17 @@ namespace Spawner
         {
             GameObject enemy = _gameFactory.CreateEnemy(transform.position, GetEnemyAssetPath());
             enemy.GetComponent<EnemyMovement>().Construct(_playerTransform);
+            enemy.GetComponent<XpSpawner>().Construct(_gameFactory);
         }
         
         private string GetEnemyAssetPath()
         {
             return _type switch
             {
-                EnemyType.SkeletonArcher => AsstetsPath.SkeletonArcherPrefabPath,
-                EnemyType.SkeletonSpearman => AsstetsPath.SkeletonSpearmanPrefabPath,
-                EnemyType.SkeletonWarrior => AsstetsPath.SkeletonWarriorPrefabPath,
-                _ => AsstetsPath.SkeletonArcherPrefabPath
+                EnemyType.SkeletonArcher => AssetsPath.SkeletonArcherPrefabPath,
+                EnemyType.SkeletonSpearman => AssetsPath.SkeletonSpearmanPrefabPath,
+                EnemyType.SkeletonWarrior => AssetsPath.SkeletonWarriorPrefabPath,
+                _ => AssetsPath.SkeletonArcherPrefabPath
             };
         }
     }

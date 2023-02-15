@@ -12,6 +12,7 @@ namespace Components
         private static readonly int Vertical = Animator.StringToHash("Vertical");
         private static readonly int Speed = Animator.StringToHash("Speed");
         private static readonly int AttackTrigger = Animator.StringToHash("Attack");
+        private static readonly int Death = Animator.StringToHash("Death");
         
         [SerializeField] private Animator animator;
         
@@ -25,6 +26,11 @@ namespace Components
         public void PLayAttack()
         {
             animator.SetTrigger(AttackTrigger);
+        }
+
+        public void PlayDeath()
+        {
+            animator.SetTrigger(Death);
         }
     }
 }

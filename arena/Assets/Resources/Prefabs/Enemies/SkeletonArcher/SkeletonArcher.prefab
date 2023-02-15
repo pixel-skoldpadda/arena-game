@@ -176,7 +176,9 @@ GameObject:
   - component: {fileID: 4232938923405228968}
   - component: {fileID: 5629351532757972580}
   - component: {fileID: 8280973012319072550}
-  m_Layer: 13
+  - component: {fileID: 9087034598428380751}
+  - component: {fileID: 132964256618299724}
+  m_Layer: 0
   m_Name: SkeletonArcher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -196,6 +198,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 796333978735510210}
+  - {fileID: 4738354328061659769}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -336,7 +339,7 @@ MonoBehaviour:
   body2D: {fileID: 3307034641367268282}
   speed: 1
   animator: {fileID: 4208099789838360614}
-  minDistance: 0.5
+  minDistance: 0.3
 --- !u!114 &5629351532757972580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -369,6 +372,34 @@ MonoBehaviour:
   attackCooldown: 3
   damage: 5
   animator: {fileID: 4208099789838360614}
+--- !u!114 &9087034598428380751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3307034641367268287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9164cc519b0a47fba37d3a18e86a025e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 5629351532757972580}
+  movement: {fileID: 4232938923405228968}
+  animator: {fileID: 4208099789838360614}
+--- !u!114 &132964256618299724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3307034641367268287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a31dfad0200a47268e4aeb598c3f2721, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyDeath: {fileID: 9087034598428380751}
 --- !u!1 &5075813917774979281
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,3 +477,51 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &7178699780382849558
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4738354328061659769}
+  - component: {fileID: 4883325344157841075}
+  m_Layer: 13
+  m_Name: HitBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4738354328061659769
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7178699780382849558}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3307034641367268281}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &4883325344157841075
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7178699780382849558}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.35

@@ -14,7 +14,7 @@ namespace Infrastructure.DI.Services.Factory
 
         public GameObject CreatePlayer(Vector3 at)
         {
-            return _assets.Instantiate(AsstetsPath.PlayerPrefabPath, at);
+            return _assets.Instantiate(AssetsPath.PlayerPrefabPath, at);
         }
 
         public GameObject CreateEnemy(Vector3 at, string assetsPath)
@@ -24,7 +24,12 @@ namespace Infrastructure.DI.Services.Factory
 
         public GameObject CreateSpawner(Vector3 at)
         {
-            return _assets.Instantiate(AsstetsPath.SpawnerPrefabPath, at);
+            return _assets.Instantiate(AssetsPath.SpawnerPrefabPath, at);
+        }
+
+        public GameObject CreateXp(Vector3 at)
+        {
+            return _assets.Instantiate(AssetsPath.XpPrefabPath, at);
         }
     }
 }

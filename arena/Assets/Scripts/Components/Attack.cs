@@ -59,7 +59,7 @@ namespace Components
             var size = Hit();
             for (int i = 0; i < size; i++)
             {
-                _hits[i].transform.GetComponent<Health>().TakeDamage(damage);
+                _hits[i].transform.parent.GetComponent<Health>().TakeDamage(damage);
             }
         }
         

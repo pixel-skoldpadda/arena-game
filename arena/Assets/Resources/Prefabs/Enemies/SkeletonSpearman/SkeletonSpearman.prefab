@@ -1,5 +1,53 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4329422803692248271
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1803965360220821138}
+  - component: {fileID: 5996754122399974554}
+  m_Layer: 13
+  m_Name: HitBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1803965360220821138
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4329422803692248271}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8738542038194482659}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &5996754122399974554
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4329422803692248271}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.4
 --- !u!1 &6701052492911224757
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,7 +224,9 @@ GameObject:
   - component: {fileID: 8738542038194482656}
   - component: {fileID: 3313695376710542309}
   - component: {fileID: 4697591557011254002}
-  m_Layer: 13
+  - component: {fileID: 6710186490652924968}
+  - component: {fileID: 6422928669218554667}
+  m_Layer: 0
   m_Name: SkeletonSpearman
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -196,6 +246,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3609746358744671699}
+  - {fileID: 1803965360220821138}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -334,7 +385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body2D: {fileID: 8738542038194482657}
-  speed: 0.5
+  speed: 0.3
   animator: {fileID: 8170642352462341888}
   minDistance: 0.5
 --- !u!114 &3313695376710542309
@@ -369,6 +420,34 @@ MonoBehaviour:
   attackCooldown: 3
   damage: 5
   animator: {fileID: 8170642352462341888}
+--- !u!114 &6710186490652924968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8738542038194482661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9164cc519b0a47fba37d3a18e86a025e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 3313695376710542309}
+  movement: {fileID: 8738542038194482656}
+  animator: {fileID: 8170642352462341888}
+--- !u!114 &6422928669218554667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8738542038194482661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a31dfad0200a47268e4aeb598c3f2721, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyDeath: {fileID: 6710186490652924968}
 --- !u!1 &9037293796481176539
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,9 +1,9 @@
 ﻿using Components.Player;
-using Infrastructure.DI.Services.Factory;
 using Infrastructure.DI.Services.Factory.Game;
 using Infrastructure.DI.Services.Factory.Ui;
 using Infrastructure.States.Interfaces;
 using Spawner;
+using Ui;
 using UnityEngine;
 
 namespace Infrastructure.States
@@ -11,27 +11,38 @@ namespace Infrastructure.States
     /**
      * Класс, описывающий состояние загрузки игрового уровня.
      */
-    public class LoadLevelState : IState
+    public class LoadSceneState : IPayLoadedState<string>
     {
         private readonly GameStateMachine _stateMachine;
         private readonly IGameFactory _gameFactory;
         private readonly IUiFactory _uiFactory;
+        private readonly SceneLoader _sceneLoader;
+        private readonly LoadingCurtain _loadingCurtain;
         
-        public LoadLevelState(GameStateMachine stateMachine, IGameFactory gameFactory, IUiFactory uiFactory)
+        public LoadSceneState(GameStateMachine stateMachine, IGameFactory gameFactory, IUiFactory uiFactory, SceneLoader sceneLoader, 
+            LoadingCurtain loadingCurtain)
         {
             _stateMachine = stateMachine;
             _gameFactory = gameFactory;
             _uiFactory = uiFactory;
+            _sceneLoader = sceneLoader;
+            _loadingCurtain = loadingCurtain;
         }
 
-        public void Enter()
+        public void Enter(string sceneName)
         {
             Debug.Log("LoadLevelState entered.");
 
+            _loadingCurtain.Show();
+            _sceneLoader.Load(sceneName, OnLoaded);
+        }
+
+        private void OnLoaded()
+        {
             InitGameWorld();
             _stateMachine.Enter<GameLoopState>();
         }
-
+        
         private void InitGameWorld()
         {
             Debug.Log("Init game world.");
@@ -67,6 +78,7 @@ namespace Infrastructure.States
         public void Exit()
         {
             Debug.Log("LoadLevelState exited");
+            _loadingCurtain.Hide();
         }
     }
 }

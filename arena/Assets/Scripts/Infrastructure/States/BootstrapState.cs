@@ -15,13 +15,16 @@ namespace Infrastructure.States
      */
     public class BootstrapState : IState
     {
-        private readonly GameStateMachine _stateMachine;
+        private const string MenuScene = "MenuScene";
         private readonly DiContainer _container;
-
-        public BootstrapState(GameStateMachine stateMachine, DiContainer container)
+        private readonly IGameStateMachine _gameStateMachine;
+        private readonly SceneLoader _sceneLoader;
+        
+        public BootstrapState(DiContainer container, IGameStateMachine gameStateMachine, SceneLoader sceneLoader)
         {
-            _stateMachine = stateMachine;
             _container = container;
+            _gameStateMachine = gameStateMachine;
+            _sceneLoader = sceneLoader;
             
             BindServices();
         }
@@ -29,7 +32,7 @@ namespace Infrastructure.States
         public void Enter()
         {
             Debug.Log("BootstrapState entered.");
-            _stateMachine.Enter<LoadLevelState>();
+            _sceneLoader.Load(MenuScene);
         }
 
         public void Exit()
@@ -41,6 +44,8 @@ namespace Infrastructure.States
         {
             Debug.Log("Binding services.");
 
+            _container.Bind(_gameStateMachine);
+            
             IGameStateService gameStateService = new GameStateService();
             gameStateService.State = new GameState();
             _container.Bind(gameStateService);

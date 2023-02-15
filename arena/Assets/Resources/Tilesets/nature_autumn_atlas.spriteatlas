@@ -1,0 +1,182 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: nature_autumn_atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: -645143297, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: 1725092872, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: -1802428047, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: -330926668, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: 906109652, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: 1660554190, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: 1312846856, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: -538044654, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: -1629990825, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: -266126939, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: -1798560369, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: -1907803217, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: 1091932818, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: -1695135899, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: -689295307, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: -1664297755, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: 816963889, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: -163210744, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: 1136430563, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: 393179159, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: 533402305, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: -1729453384, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: -1247797907, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: -1507395170, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: 2059092981, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: 1848895385, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: 1424589283, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: -81583814, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: -266287533, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: -194401681, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: 1960832477, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: -432213727, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: -713832852, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: -2083783628, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: 1056512516, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: 1683605363, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: -990172810, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: 967402198, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: -1978328135, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: -1393752380, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: -551981246, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: 1300325147, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: 288635183, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: 1780411637, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: 1956154628, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: -1485259222, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: 2062182383, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: 1091379652, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: -1224685680, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: -745413212, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: 1902792244, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: -823735674, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: 1675126158, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: -1720850619, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: -1115249364, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: -259968871, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: 1156306038, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: 90228448, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: 461476766, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: -86547830, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: -1000560293, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: -35550316, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: 2054034117, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: -1964426848, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: 1353320450, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: 616298087, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: -707136343, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: 1594697810, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  - {fileID: 1164122170, guid: cbabedca4616f4844bca1d97c83a424a, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - nature_tileset_autumn_32x32_50
+  - nature_tileset_autumn_32x32_53
+  - nature_tileset_autumn_32x32_48
+  - nature_tileset_autumn_32x32_52
+  - nature_tileset_autumn_32x32_49
+  - nature_tileset_autumn_32x32_59
+  - nature_tileset_autumn_32x32_58
+  - nature_tileset_autumn_32x32_2
+  - nature_tileset_autumn_32x32_3
+  - nature_tileset_autumn_32x32_0
+  - nature_tileset_autumn_32x32_1
+  - nature_tileset_autumn_32x32_6
+  - nature_tileset_autumn_32x32_7
+  - nature_tileset_autumn_32x32_4
+  - nature_tileset_autumn_32x32_5
+  - nature_tileset_autumn_32x32_8
+  - nature_tileset_autumn_32x32_9
+  - nature_tileset_autumn_32x32_33
+  - nature_tileset_autumn_32x32_32
+  - nature_tileset_autumn_32x32_31
+  - nature_tileset_autumn_32x32_30
+  - nature_tileset_autumn_32x32_37
+  - nature_tileset_autumn_32x32_36
+  - nature_tileset_autumn_32x32_35
+  - nature_tileset_autumn_32x32_19
+  - nature_tileset_autumn_32x32_34
+  - nature_tileset_autumn_32x32_18
+  - nature_tileset_autumn_32x32_39
+  - nature_tileset_autumn_32x32_38
+  - nature_tileset_autumn_32x32_68
+  - nature_tileset_autumn_32x32_11
+  - nature_tileset_autumn_32x32_10
+  - nature_tileset_autumn_32x32_13
+  - nature_tileset_autumn_32x32_12
+  - nature_tileset_autumn_32x32_64
+  - nature_tileset_autumn_32x32_15
+  - nature_tileset_autumn_32x32_65
+  - nature_tileset_autumn_32x32_14
+  - nature_tileset_autumn_32x32_66
+  - nature_tileset_autumn_32x32_17
+  - nature_tileset_autumn_32x32_67
+  - nature_tileset_autumn_32x32_16
+  - nature_tileset_autumn_32x32_60
+  - nature_tileset_autumn_32x32_61
+  - nature_tileset_autumn_32x32_62
+  - nature_tileset_autumn_32x32_63
+  - nature_tileset_autumn_32x32_20
+  - nature_tileset_autumn_32x32_21
+  - nature_tileset_autumn_32x32_22
+  - nature_tileset_autumn_32x32_42
+  - nature_tileset_autumn_32x32_23
+  - nature_tileset_autumn_32x32_43
+  - nature_tileset_autumn_32x32_24
+  - nature_tileset_autumn_32x32_40
+  - nature_tileset_autumn_32x32_25
+  - nature_tileset_autumn_32x32_41
+  - nature_tileset_autumn_32x32_55
+  - nature_tileset_autumn_32x32_26
+  - nature_tileset_autumn_32x32_46
+  - nature_tileset_autumn_32x32_54
+  - nature_tileset_autumn_32x32_27
+  - nature_tileset_autumn_32x32_47
+  - nature_tileset_autumn_32x32_57
+  - nature_tileset_autumn_32x32_28
+  - nature_tileset_autumn_32x32_44
+  - nature_tileset_autumn_32x32_56
+  - nature_tileset_autumn_32x32_29
+  - nature_tileset_autumn_32x32_45
+  - nature_tileset_autumn_32x32_51
+  m_RenderDataMap: {}
+  m_Tag: nature_autumn_atlas
+  m_IsVariant: 0

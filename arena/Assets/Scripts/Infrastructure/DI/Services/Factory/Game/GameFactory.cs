@@ -2,23 +2,26 @@
 using Components.Enemy;
 using Components.Movement;
 using Infrastructure.DI.Services.AssetsManagement;
+using Infrastructure.DI.Services.Data;
 using Infrastructure.DI.Services.Items.Items;
 using Items;
 using UnityEngine;
 
-namespace Infrastructure.DI.Services.Factory
+namespace Infrastructure.DI.Services.Factory.Game
 {
     public class GameFactory : IGameFactory
     {
         private readonly IAssetProvider _assets;
         private readonly IItemsService _items;
-
+        private readonly GameState _gameState;
+        
         private GameObject _playerGameObject;
         
-        public GameFactory(IAssetProvider assets, IItemsService items)
+        public GameFactory(IAssetProvider assets, IItemsService items, IGameStateService gameStateService)
         {
             _assets = assets;
             _items = items;
+            _gameState = gameStateService.State;
         }
 
         public GameObject CreatePlayer(Vector3 at)
@@ -59,6 +62,8 @@ namespace Infrastructure.DI.Services.Factory
             EnemyHealth health = enemy.GetComponent<EnemyHealth>();
             health.Construct(this);
             health.MaxHp = enemyItem.health;
+
+            enemy.GetComponent<EnemyDeath>().Construct(_gameState);
 
             return enemy;
         }

@@ -2,7 +2,7 @@ using Components;
 using Items;
 using UnityEngine;
 
-namespace Infrastructure.DI.Services.Factory
+namespace Infrastructure.DI.Services.Factory.Game
 {
     public interface IGameFactory : IService
     {

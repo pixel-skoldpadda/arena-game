@@ -1,5 +1,7 @@
 ﻿using Components.Player;
 using Infrastructure.DI.Services.Factory;
+using Infrastructure.DI.Services.Factory.Game;
+using Infrastructure.DI.Services.Factory.Ui;
 using Infrastructure.States.Interfaces;
 using Spawner;
 using UnityEngine;
@@ -13,11 +15,13 @@ namespace Infrastructure.States
     {
         private readonly GameStateMachine _stateMachine;
         private readonly IGameFactory _gameFactory;
+        private readonly IUiFactory _uiFactory;
         
-        public LoadLevelState(GameStateMachine stateMachine, IGameFactory gameFactory)
+        public LoadLevelState(GameStateMachine stateMachine, IGameFactory gameFactory, IUiFactory uiFactory)
         {
             _stateMachine = stateMachine;
             _gameFactory = gameFactory;
+            _uiFactory = uiFactory;
         }
 
         public void Enter()
@@ -32,6 +36,7 @@ namespace Infrastructure.States
         {
             Debug.Log("Init game world.");
 
+            _uiFactory.CreateHud();
             GameObject player = CreatePlayer();
             CameraFollow(player);
             CreateSpawners();

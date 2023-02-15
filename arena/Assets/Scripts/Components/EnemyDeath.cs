@@ -12,9 +12,16 @@ namespace Components
         [SerializeField] private EnemyHealth health;
         [SerializeField] private EnemyMovement movement;
         [SerializeField] private AnimatorWrapper animator;
+
+        private GameState _gameState;
         
         public Action OnDie;
-    
+
+        public void Construct(GameState gameState)
+        {
+            _gameState = gameState;
+        }
+        
         private void Start()
         {
             health.HealthChanged += HealthChanged;
@@ -30,6 +37,7 @@ namespace Components
             if (health.Current <= 0f)
             {
                 Die();
+                _gameState.DeathCount++;
             }
         }
 

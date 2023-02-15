@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Infrastructure.DI;
-using Infrastructure.DI.Services.Factory;
+using Infrastructure.DI.Services.Factory.Game;
+using Infrastructure.DI.Services.Factory.Ui;
 using Infrastructure.States.Interfaces;
 
 namespace Infrastructure.States
@@ -19,7 +20,7 @@ namespace Infrastructure.States
             _states = new Dictionary<Type, IExitableState>
             {
                 [typeof(BootstrapState)] = new BootstrapState(this, container),
-                [typeof(LoadLevelState)] = new LoadLevelState(this, container.Get<IGameFactory>()),
+                [typeof(LoadLevelState)] = new LoadLevelState(this, container.Get<IGameFactory>(), container.Get<IUiFactory>()),
                 [typeof(GameLoopState)] = new GameLoopState()
             };
         }

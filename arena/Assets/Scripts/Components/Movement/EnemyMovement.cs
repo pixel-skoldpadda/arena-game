@@ -35,7 +35,5 @@ namespace Components.Movement
             axis.Normalize();
             return axis;
         }
-        
-        
     }
 }

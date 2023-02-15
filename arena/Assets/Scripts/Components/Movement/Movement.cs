@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
 
 namespace Components.Movement
@@ -8,9 +7,9 @@ namespace Components.Movement
     public abstract class Movement : MonoBehaviour
     {
         [SerializeField] private Rigidbody2D body2D;
-        [SerializeField] private float speed;
         [SerializeField] private AnimatorWrapper animator;
-
+        
+        private float _speed;
         private bool _moving;
         private Vector2 _axis;
 
@@ -34,7 +33,7 @@ namespace Components.Movement
         {
             if (_moving)
             {
-                body2D.MovePosition(body2D.position + _axis * (speed * Time.fixedDeltaTime));   
+                body2D.MovePosition(body2D.position + _axis * (_speed * Time.fixedDeltaTime));   
             }
         }
 
@@ -53,6 +52,11 @@ namespace Components.Movement
         {
             body2D.simulated = true;
             _moving = true;
+        }
+        
+        public float Speed
+        {
+            set => _speed = value;
         }
     }
 }

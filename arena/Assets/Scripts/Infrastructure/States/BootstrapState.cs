@@ -1,7 +1,8 @@
 ﻿using Infrastructure.DI;
-using Infrastructure.DI.Services.AssetsManagment;
+using Infrastructure.DI.Services.AssetsManagement;
 using Infrastructure.DI.Services.Factory;
 using Infrastructure.DI.Services.Input;
+using Infrastructure.DI.Services.Items.Items;
 using Infrastructure.States.Interfaces;
 using UnityEngine;
 
@@ -37,13 +38,17 @@ namespace Infrastructure.States
         private void BindServices()
         {
             Debug.Log("Binding services.");
+
+            IItemsService itemsService = new ItemsService();
+            itemsService.LoadItems();
+            _container.Bind(itemsService);
             
             _container.Bind<IInputService>(new InputService());
             
             IAssetProvider assetsProvider = new AssetsProvider();
             _container.Bind(assetsProvider);
             
-            _container.Bind<IGameFactory>(new GameFactory(assetsProvider));
+            _container.Bind<IGameFactory>(new GameFactory(assetsProvider, itemsService));
         }
     }
 }

@@ -34,25 +34,24 @@ namespace Infrastructure.States
 
             GameObject player = CreatePlayer();
             CameraFollow(player);
-            CreateSpawners(player.transform);
+            CreateSpawners();
         }
 
-        private void CreateSpawners(Transform playerTransform)
+        private void CreateSpawners()
         {
             GameObject[] markers = GameObject.FindGameObjectsWithTag("Spawner");
             foreach (GameObject marker in markers)
             {
                 SpawnerMarker spawnerMarker = marker.GetComponent<SpawnerMarker>();
                 EnemySpawner enemySpawner = _gameFactory.CreateSpawner(marker.transform.position).GetComponent<EnemySpawner>();
-                enemySpawner.Construct(_gameFactory, playerTransform.transform, spawnerMarker.EnemyType);
+                enemySpawner.Construct(_gameFactory, spawnerMarker.EnemyType);
                 enemySpawner.SpawnEnemy();
             }
         }
         
         private GameObject CreatePlayer()
         {
-            GameObject gameObject = _gameFactory.CreatePlayer(Vector3.zero);
-            return gameObject;
+            return _gameFactory.CreatePlayer(Vector3.zero);
         }
         
         private void CameraFollow(GameObject following)

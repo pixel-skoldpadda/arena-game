@@ -7,18 +7,27 @@ namespace Components
     public class Health : MonoBehaviour
     {
         [SerializeField] private Image progressBar;
-        [SerializeField] protected float max;
-        [SerializeField] protected float current;
+        private float _maxHp;
+        private float _current;
 
         public event Action HealthChanged;
 
         public void TakeDamage(float damage)
         {
-            current -= damage;
+            _current -= damage;
             HealthChanged?.Invoke();
-            progressBar.fillAmount = current / max;
+            progressBar.fillAmount = _current / _maxHp;
         }
 
-        public float Current => current;
+        public float Current => _current;
+
+        public float MaxHp
+        {
+            set
+            {
+                _maxHp = value;
+                _current = value;
+            }
+        }
     }
 }

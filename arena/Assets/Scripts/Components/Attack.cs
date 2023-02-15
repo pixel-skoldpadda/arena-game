@@ -5,11 +5,12 @@ namespace Components
     [RequireComponent(typeof(AnimatorWrapper))]
     public class Attack : MonoBehaviour
     {
-        [SerializeField] private float attackRadius;
         [SerializeField] private string physicsLayerName;
-        [SerializeField] private float attackCooldown = 3f;
-        [SerializeField] private float damage = 5f;
         [SerializeField] private AnimatorWrapper animator;
+        
+        private float _attackRadius;
+        private float _attackCooldown;
+        private float _damage;
 
         private readonly Collider2D[] _hits = new Collider2D[8];
         private int _layerMask;
@@ -18,7 +19,7 @@ namespace Components
         private void Awake()
         {
             _layerMask = 1 << LayerMask.NameToLayer(physicsLayerName);
-            _cooldown = attackCooldown;
+            _cooldown = _attackCooldown;
         }
 
         private void Update()
@@ -30,7 +31,7 @@ namespace Components
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.magenta;
-            Gizmos.DrawWireSphere(transform.position, attackRadius);
+            Gizmos.DrawWireSphere(transform.position, _attackRadius);
         }
         
         private void UpdateCooldown()
@@ -53,19 +54,38 @@ namespace Components
                 return;
             }
 
-            _cooldown = attackCooldown;
+            _cooldown = _attackCooldown;
             animator.PLayAttack();
 
             var size = Hit();
             for (int i = 0; i < size; i++)
             {
-                _hits[i].transform.parent.GetComponent<Health>().TakeDamage(damage);
+                _hits[i].transform.parent.GetComponent<Health>().TakeDamage(_damage);
             }
         }
         
         private int Hit()
         {
-            return Physics2D.OverlapCircleNonAlloc(transform.position, attackRadius, _hits, _layerMask);
+            return Physics2D.OverlapCircleNonAlloc(transform.position, _attackRadius, _hits, _layerMask);
+        }
+
+        public float AttackRadius
+        {
+            set => _attackRadius = value;
+        }
+
+        public float AttackCooldown
+        {
+            set
+            {
+                _attackCooldown = value;
+                _cooldown = value;
+            }
+        }
+
+        public float Damage
+        {
+            set => _damage = value;
         }
     }
 }

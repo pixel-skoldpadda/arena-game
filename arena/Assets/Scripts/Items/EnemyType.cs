@@ -1,4 +1,4 @@
-﻿namespace Spawner
+﻿namespace Items
 {
     public enum EnemyType
     {

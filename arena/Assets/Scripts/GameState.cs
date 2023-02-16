@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Items.Loot;
 using Items.Perks;
 
 [Serializable]
@@ -18,7 +19,8 @@ public class GameState
     private Action _currentXpChanged;
 
     private Action _onNewPerkAdded;
-
+    private Action<int> _onHealthAdded;
+    
     private Dictionary<Type, Perk> _activePerks = new();
 
     public void IncrementDeathCounter()
@@ -120,5 +122,29 @@ public class GameState
     {
         get => _onNewPerkAdded;
         set => _onNewPerkAdded = value;
+    }
+
+    public Action<int> OnHealthAdded
+    {
+        get => _onHealthAdded;
+        set => _onHealthAdded = value;
+    }
+
+    public void AddLoot(CountedLoot loot)
+    {
+        switch (loot.type)
+        {
+            case LootType.XpSmall:
+            case LootType.XpBig:
+                CurrentXp += loot.count;
+                break;
+            case LootType.HealthSmall:
+            case LootType.HealthBig:
+                OnHealthAdded.Invoke(loot.count);
+                break;
+            case LootType.Coins:
+                Coins += loot.count;
+                break;
+        }
     }
 }

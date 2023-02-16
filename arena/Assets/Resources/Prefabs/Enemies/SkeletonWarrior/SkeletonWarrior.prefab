@@ -17,8 +17,8 @@ GameObject:
   - component: {fileID: 6183678990894928623}
   - component: {fileID: 7434024778981089845}
   - component: {fileID: 3532754634984980319}
-  - component: {fileID: 516303781427558988}
   - component: {fileID: 8956362284788748505}
+  - component: {fileID: 1095157079954721554}
   m_Layer: 0
   m_Name: SkeletonWarrior
   m_TagString: Untagged
@@ -208,19 +208,6 @@ MonoBehaviour:
   health: {fileID: 8956362284788748505}
   movement: {fileID: 6183678990894928623}
   animator: {fileID: 198223553332779324}
---- !u!114 &516303781427558988
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6183678990894927120}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a31dfad0200a47268e4aeb598c3f2721, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyDeath: {fileID: 3532754634984980319}
 --- !u!114 &8956362284788748505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,6 +220,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 227a0e2788304c4094f16867ff468526, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1095157079954721554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6183678990894927120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c23a1a4cee847e580f6ea15da3abba4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyDeath: {fileID: 3532754634984980319}
 --- !u!1 &7147845963261438880
 GameObject:
   m_ObjectHideFlags: 0

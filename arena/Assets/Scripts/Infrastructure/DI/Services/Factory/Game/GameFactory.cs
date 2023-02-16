@@ -1,5 +1,6 @@
 ﻿using Components;
 using Components.Enemy;
+using Components.Loot;
 using Components.Movement;
 using Components.Player;
 using Infrastructure.DI.Services.AssetsManagement;
@@ -7,6 +8,7 @@ using Infrastructure.DI.Services.Game;
 using Infrastructure.DI.Services.Items;
 using Infrastructure.DI.Services.StateService;
 using Items;
+using Items.Loot;
 using UnityEngine;
 
 namespace Infrastructure.DI.Services.Factory.Game
@@ -61,14 +63,14 @@ namespace Infrastructure.DI.Services.Factory.Game
             EnemyMovement enemyMovement = enemy.GetComponent<EnemyMovement>();
             enemyMovement.Construct(_playerGameObject.transform, _gameManager);
             enemyMovement.Speed = enemyItem.speed;
-            
-            enemy.GetComponent<XpSpawner>().Construct(this);
 
             Attack attack = enemy.GetComponent<Attack>();
             attack.AttackCooldown = enemyItem.attackCooldown;
             attack.AttackRadius = enemyItem.attackRadius;
             attack.Damage = enemyItem.damage;
 
+            enemy.GetComponent<LootSpawner>().Construct(_items, this);
+            
             EnemyHealth health = enemy.GetComponent<EnemyHealth>();
             health.Construct(this);
             health.MaxHp = enemyItem.health;
@@ -89,12 +91,10 @@ namespace Infrastructure.DI.Services.Factory.Game
             return _assets.Instantiate(AssetsPath.SpawnerPrefabPath, at);
         }
 
-        public GameObject CreateXp(Vector3 at)
+        public void CreateLoot(CountedLoot loot, Vector3 at)
         {
-            GameObject xp = _assets.Instantiate(AssetsPath.XpPrefabPath, at);
-            xp.GetComponent<LootPiece>().Construct(_gameState);
-
-            return xp;
+            LootPiece lootPiece = Object.Instantiate(loot.prefab, at, Quaternion.identity).GetComponent<LootPiece>();
+            lootPiece.Construct(_gameState, loot);
         }
     }
 }

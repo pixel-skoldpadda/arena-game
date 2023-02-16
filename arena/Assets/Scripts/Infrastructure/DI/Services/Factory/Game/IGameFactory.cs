@@ -1,5 +1,6 @@
 using Components;
 using Items;
+using Items.Loot;
 using UnityEngine;
 
 namespace Infrastructure.DI.Services.Factory.Game
@@ -9,7 +10,7 @@ namespace Infrastructure.DI.Services.Factory.Game
         GameObject CreatePlayer(Vector3 at);
         GameObject CreateEnemy(EnemyType type, Transform parent);
         GameObject CreateSpawner(Vector3 at);
-        GameObject CreateXp(Vector3 at);
         FloatingText CreateFloatingText(Transform parent);
+        void CreateLoot(CountedLoot loot, Vector3 at);
     }
 }

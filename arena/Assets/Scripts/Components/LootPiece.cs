@@ -1,18 +1,18 @@
-﻿using UnityEngine;
+﻿using Items.Loot;
+using UnityEngine;
 
 namespace Components
 {
-    // todo: Переработать систему лута
     public class LootPiece : MonoBehaviour
     {
-        [SerializeField] private int xpAmount;
-        
         private bool _picked;
         private GameState _gameState;
+        private CountedLoot _loot;
         
-        public void Construct(GameState gameState)
+        public void Construct(GameState gameState, CountedLoot loot)
         {
             _gameState = gameState;
+            _loot = loot;
         }
         
         private void OnTriggerEnter2D(Collider2D col)
@@ -27,7 +27,7 @@ namespace Components
                 return;
             }
 
-            _gameState.CurrentXp += xpAmount;
+            _gameState.AddLoot(_loot);
             _picked = true;
             
             Destroy(gameObject);

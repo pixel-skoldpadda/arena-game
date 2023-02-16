@@ -61,7 +61,14 @@ namespace Infrastructure.DI.Services.Game
         {
             _onGameResumed?.Invoke();
         }
-    
+
+        public void OnPLayerDie()
+        {
+            PauseGame();
+            _gameState.Reset();
+            _windows.Open(WindowType.Death);
+        }
+        
         public void InitStartLevel()
         {
             _gameState.CurrentLevel = 0;

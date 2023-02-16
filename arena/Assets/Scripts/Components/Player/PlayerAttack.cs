@@ -1,5 +1,4 @@
 ﻿using Items.Perks;
-using UnityEngine;
 
 namespace Components.Player
 {
@@ -18,11 +17,7 @@ namespace Components.Player
             get
             {
                 DamagePerk damagePerk = _gameState.GetPerk<DamagePerk>();
-                int d = damagePerk != null ? CurrentDamage + damagePerk.damageAmount : CurrentDamage;
-                
-                Debug.Log($"Player damage : {d}");
-                
-                return d;
+                return damagePerk != null ? CurrentDamage + damagePerk.damageAmount : CurrentDamage;
             }
         }
     }

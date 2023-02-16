@@ -10,5 +10,6 @@ namespace Infrastructure.DI.Services.Game
         void InitStartLevel();
         Action OnGamePaused { get; set; }
         Action OnGameResumed { get; set; }
+        void OnPLayerDie();
     }
 }

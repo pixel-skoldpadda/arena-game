@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 4363880007610057645}
   - component: {fileID: 5477298925076794091}
   - component: {fileID: 5296400907544191113}
+  - component: {fileID: 938421401409734959}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -279,6 +280,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   physicsLayerName: Enemy
+  animator: {fileID: 7226570895017107898}
+--- !u!114 &938421401409734959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4363880007610057646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f131b081ba454aa39a3ddf18ebabd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 5477298925076794091}
+  movement: {fileID: 4363880007610057645}
   animator: {fileID: 7226570895017107898}
 --- !u!1 &6138506523463345549
 GameObject:

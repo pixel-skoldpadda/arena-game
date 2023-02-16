@@ -36,6 +36,15 @@ public class GameState
     {
         return _activePerks.TryGetValue(typeof(TPerk), out var perk) ? perk as TPerk: null;
     }
+
+    public void Reset()
+    {
+        _activePerks.Clear();
+        _deathCount = 0;
+        _currentLevel = 0;
+        _currentXp = 0;
+        _needXp = 0;
+    }
     
     public Action CoinsChanged
     {

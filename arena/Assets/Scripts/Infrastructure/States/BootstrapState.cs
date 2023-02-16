@@ -68,7 +68,7 @@ namespace Infrastructure.States
             IPerksGenerator perksGenerator = new PerksGenerator(itemsService);
             _container.Bind(perksGenerator);
             
-            IUiFactory uiFactory = new UiFactory(assetsProvider, gameStateService, itemsService, perksGenerator);
+            IUiFactory uiFactory = new UiFactory(assetsProvider, gameStateService, itemsService, perksGenerator, _gameStateMachine);
             _container.Bind(uiFactory);
 
             IWindowsService windowsService = new WindowsService(uiFactory);

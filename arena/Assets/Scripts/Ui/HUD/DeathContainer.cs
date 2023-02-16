@@ -1,4 +1,5 @@
-﻿using Infrastructure.DI.Services.StateService;
+﻿using System;
+using Infrastructure.DI.Services.StateService;
 using TMPro;
 using UnityEngine;
 
@@ -19,6 +20,11 @@ namespace Ui.HUD
         private void UpdateCounter()
         {
             deathCounter.text = $"{_gameState.DeathCount}";
+        }
+
+        private void OnDestroy()
+        {
+            _gameState.DeathCountChanged -= UpdateCounter;
         }
     }
 }

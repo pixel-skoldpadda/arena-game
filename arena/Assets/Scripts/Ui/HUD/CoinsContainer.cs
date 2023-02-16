@@ -20,5 +20,10 @@ namespace Ui.HUD
         {
             coinsCounter.text = $"{_gameState.Coins}";
         }
+
+        private void OnDestroy()
+        {
+            _gameState.CoinsChanged -= UpdateCounter;
+        }
     }
 }

@@ -7,5 +7,6 @@ namespace Infrastructure.DI.Services.Factory.Ui
         GameObject CreateHud();
         void CreateUiRoot();
         void CreatePerksWindow();
+        void CreateDeathWindow();
     }
 }

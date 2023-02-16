@@ -17,6 +17,10 @@ namespace Infrastructure.DI.Services.Windows
             {
                 _uiFactory.CreatePerksWindow();
             }
+            else if (type == WindowType.Death)
+            {
+                _uiFactory.CreateDeathWindow();
+            }
         }
     }
 }

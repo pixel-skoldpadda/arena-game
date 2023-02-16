@@ -46,7 +46,10 @@ namespace Infrastructure.DI.Services.Factory.Game
             IHealth health = _playerGameObject.GetComponent<IHealth>();
             ((PlayerHealth) health).Construct(_gameState);
             health.MaxHp = characterItem.health;
-            
+
+            PlayerDeath playerDeath = _playerGameObject.GetComponent<PlayerDeath>();
+            playerDeath.OnDie += _gameManager.OnPLayerDie;
+
             return _playerGameObject;
         }
 

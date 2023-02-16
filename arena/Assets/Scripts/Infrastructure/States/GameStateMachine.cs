@@ -23,13 +23,14 @@ namespace Infrastructure.States
             _states = new Dictionary<Type, IExitableState>
             {
                 [typeof(BootstrapState)] = new BootstrapState(container, this, sceneLoader),
-                [typeof(LoadSceneState)] = new LoadSceneState(this, 
+                [typeof(LoadLevelState)] = new LoadLevelState(this, 
                     container.Get<IGameFactory>(), 
                     container.Get<IUiFactory>(),
                     container.Get<IGameManager>(),
                     sceneLoader,
                     loadingCurtain),
-                [typeof(GameLoopState)] = new GameLoopState()
+                [typeof(GameLoopState)] = new GameLoopState(),
+                [typeof(LoadSceneState)] = new LoadSceneState(sceneLoader)
             };
         }
         

@@ -9,7 +9,7 @@ namespace Ui
         public void OnPlayButtonPressed(string sceneName)
         {
             IGameStateMachine gameStateMachine = DiContainer.Container.Get<IGameStateMachine>();
-            gameStateMachine.Enter<LoadSceneState, string>(sceneName);
+            gameStateMachine.Enter<LoadLevelState, string>(sceneName);
         }
 
         public void OnExitButtonPressed()

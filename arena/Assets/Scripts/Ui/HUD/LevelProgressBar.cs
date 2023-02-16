@@ -1,4 +1,5 @@
-﻿using Infrastructure.DI.Services.StateService;
+﻿using System;
+using Infrastructure.DI.Services.StateService;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -31,6 +32,12 @@ namespace Ui.HUD
         private void UpdateProgress()
         {
             progress.fillAmount = (float)_gameState.CurrentXp / _gameState.NeedXp;
+        }
+
+        private void OnDestroy()
+        {
+            _gameState.CurrentLevelChanged -= UpdateLevel;
+            _gameState.CurrentXpChanged -= UpdateProgress;
         }
     }
 }

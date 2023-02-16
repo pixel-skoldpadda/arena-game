@@ -9,12 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75b354e820174ee6a5d3556b9ef294fb, type: 3}
+  m_Script: {fileID: 11500000, guid: 4093c9c5fd82448ba1fa878ff3834270, type: 3}
   m_Name: SpeedPerk
   m_EditorClassIdentifier: 
-  type: 2
-  perkName: "\u0421\u043A\u043E\u0440\u043E\u0441\u0442\u044C"
-  description: "\u041F\u043E\u0432\u044B\u0448\u0430\u0435\u0442 \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u044C
-    \u0438\u0433\u0440\u043E\u043A\u0430."
+  perkName: Walkers
+  description: Increase speed by 1
   icon: {fileID: 21300000, guid: 3d31e07948a694642a0313bad782e784, type: 3}
-  amount: 0.5
+  speedAmount: 1

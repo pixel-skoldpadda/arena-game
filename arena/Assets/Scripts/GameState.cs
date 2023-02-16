@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using Items.Perks;
 
 [Serializable]
 public class GameState
@@ -16,15 +18,23 @@ public class GameState
     private Action _currentXpChanged;
 
     private Action _onNewPerkAdded;
-    
+
+    private Dictionary<Type, Perk> _activePerks = new();
+
     public void IncrementDeathCounter()
     {
         DeathCount++;
     }
 
-    public void AddPerk()
+    public void AddPerk(Perk perk)
     {
+        _activePerks[perk.GetType()] = perk;
         _onNewPerkAdded?.Invoke();
+    }
+
+    public TPerk GetPerk<TPerk>() where TPerk : Perk
+    {
+        return _activePerks.TryGetValue(typeof(TPerk), out var perk) ? perk as TPerk: null;
     }
     
     public Action CoinsChanged

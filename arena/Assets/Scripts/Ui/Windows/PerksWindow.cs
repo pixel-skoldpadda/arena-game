@@ -1,4 +1,6 @@
-﻿using Infrastructure.DI.Services.StateService;
+﻿using Infrastructure.DI.Services.Perks;
+using Infrastructure.DI.Services.StateService;
+using Items.Perks;
 using UnityEngine;
 
 namespace Ui.Windows
@@ -9,26 +11,33 @@ namespace Ui.Windows
         [SerializeField] private GameObject grid;
 
         private GameState _gameState;
-
-        public void Construct(IGameStateService gameStateService)
+        private IPerksGenerator _perksGenerator;
+        
+        public void Construct(IGameStateService gameStateService, IPerksGenerator perksGenerator)
         {
             _gameState = gameStateService.State;
+            _perksGenerator = perksGenerator;
 
             Init();
         }
 
         private void Init()
         {
-            for (int i = 0; i < 3; i++)
-            {
-                PerkGridItem perkGridItem = Instantiate(girdItemPrefab, grid.transform).GetComponent<PerkGridItem>();
-                perkGridItem.Construct(this);
-            }
+            Perk perk = _perksGenerator.GenerateRandomPerk();
+            PerkGridItem perkGridItem = Instantiate(girdItemPrefab, grid.transform).GetComponent<PerkGridItem>();
+            perkGridItem.Construct(this);
+            perkGridItem.Init(perk);
         }
 
-        public void Close()
+        public void OnPerkTaken(Perk perk)
         {
-            _gameState.AddPerk();
+            _gameState.AddPerk(perk);
+            Close();
+            
+        }
+        
+        private void Close()
+        {
             Destroy(gameObject);
         }
     }

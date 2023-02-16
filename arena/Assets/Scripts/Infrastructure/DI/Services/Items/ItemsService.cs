@@ -16,21 +16,20 @@ namespace Infrastructure.DI.Services.Items
         private const string WindowsItemsPath = "Items/Windows";
         
         private Dictionary<EnemyType, EnemyItem> _enemies;
-        private Dictionary<PerkType, PerkItem> _perksItems;
         private Dictionary<WindowType, WindowItem> _windowItems;
         private CharacterItem _characterItem;
+        private List<Perk> _allPerks;
         
         public void LoadItems()
         {
             _enemies = Resources.LoadAll<EnemyItem>(EnemyItemsPath)
                 .ToDictionary(k => k.type, v => v);
-
-            _perksItems = Resources.LoadAll<PerkItem>(PerkItemsPath)
-                .ToDictionary(k => k.type, v => v);
             
             _windowItems = Resources.LoadAll<WindowItem>(WindowsItemsPath)
                 .ToDictionary(k => k.type, v => v);
-            
+
+            _allPerks = Resources.LoadAll<Perk>(PerkItemsPath).ToList();
+
             _characterItem = Resources.Load<CharacterItem>(CharactersItemsPath);
         }
         
@@ -45,5 +44,6 @@ namespace Infrastructure.DI.Services.Items
         }
 
         public CharacterItem CharacterItem => _characterItem;
+        public List<Perk> AllPerks => _allPerks;
     }
 }

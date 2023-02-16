@@ -6,6 +6,7 @@ using Infrastructure.DI.Services.Game;
 using Infrastructure.DI.Services.Generator;
 using Infrastructure.DI.Services.Input;
 using Infrastructure.DI.Services.Items;
+using Infrastructure.DI.Services.Perks;
 using Infrastructure.DI.Services.StateService;
 using Infrastructure.DI.Services.Windows;
 using Infrastructure.States.Interfaces;
@@ -63,14 +64,17 @@ namespace Infrastructure.States
             
             IAssetProvider assetsProvider = new AssetsProvider();
             _container.Bind(assetsProvider);
+
+            IPerksGenerator perksGenerator = new PerksGenerator(itemsService);
+            _container.Bind(perksGenerator);
             
-            IUiFactory uiFactory = new UiFactory(assetsProvider, gameStateService, itemsService);
+            IUiFactory uiFactory = new UiFactory(assetsProvider, gameStateService, itemsService, perksGenerator);
             _container.Bind(uiFactory);
 
             IWindowsService windowsService = new WindowsService(uiFactory);
             _container.Bind(windowsService);
             
-            IGameManager gameManager = new GameManager(gameStateService, levelXpGenerator, windowsService);
+            IGameManager gameManager = new GameManager(gameStateService, levelXpGenerator, windowsService, perksGenerator);
             _container.Bind(gameManager);
             
             _container.Bind<IGameFactory>(new GameFactory(

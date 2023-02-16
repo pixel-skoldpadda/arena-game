@@ -12,22 +12,24 @@ namespace Ui.Windows
         [SerializeField] private TextMeshProUGUI perkDescription;
 
         private PerksWindow _perksWindow;
+        private Perk _currentPerk;
         
         public void Construct(PerksWindow perksWindow)
         {
             _perksWindow = perksWindow;
         }
         
-        public void Init(PerkItem item)
+        public void Init(Perk perk)
         {
-            icon.sprite = item.icon;
-            perkName.text = item.perkName;
-            perkDescription.text = item.description;
+            _currentPerk = perk;
+            icon.sprite = _currentPerk.icon;
+            perkName.text = _currentPerk.perkName;
+            perkDescription.text = _currentPerk.description;
         }
 
         public void OnTakeButtonPressed()
         {
-            _perksWindow.Close();
+            _perksWindow.OnPerkTaken(_currentPerk);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Infrastructure.DI.Services.AssetsManagement;
 using Infrastructure.DI.Services.Items;
+using Infrastructure.DI.Services.Perks;
 using Infrastructure.DI.Services.StateService;
 using Infrastructure.DI.Services.Windows;
 using Items.Windows;
@@ -16,12 +17,14 @@ namespace Infrastructure.DI.Services.Factory.Ui
         private readonly IAssetProvider _assets;
         private readonly IGameStateService _gameStateService;
         private readonly IItemsService _itemsService;
+        private readonly IPerksGenerator _perksGenerator;
 
-        public UiFactory(IAssetProvider assets, IGameStateService gameStateService, IItemsService itemsService)
+        public UiFactory(IAssetProvider assets, IGameStateService gameStateService, IItemsService itemsService, IPerksGenerator perksGenerator)
         {
             _assets = assets;
             _gameStateService = gameStateService;
             _itemsService = itemsService;
+            _perksGenerator = perksGenerator;
         }
 
         public void CreateUiRoot()
@@ -46,7 +49,7 @@ namespace Infrastructure.DI.Services.Factory.Ui
         {
             WindowItem windowItem = _itemsService.ForWindow(WindowType.Perks);
             PerksWindow perksWindow = Object.Instantiate(windowItem.windowPrefab, _uiRoot).GetComponent<PerksWindow>();
-            perksWindow.Construct(_gameStateService);
+            perksWindow.Construct(_gameStateService, _perksGenerator);
         }
     }
 }

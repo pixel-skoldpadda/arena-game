@@ -1,5 +1,6 @@
 ﻿using System;
 using Infrastructure.DI.Services.Generator;
+using Infrastructure.DI.Services.Perks;
 using Infrastructure.DI.Services.StateService;
 using Infrastructure.DI.Services.Windows;
 
@@ -13,15 +14,18 @@ namespace Infrastructure.DI.Services.Game
         private readonly GameState _gameState;
         private readonly ILevelXpGenerator _xpGenerator;
         private readonly IWindowsService _windows;
-
+        private readonly IPerksGenerator _perksGenerator;
+        
         private Action _onGamePaused;
         private Action _onGameResumed;
-        
-        public GameManager(IGameStateService gameStateService, ILevelXpGenerator xpGenerator, IWindowsService windows)
+
+        public GameManager(IGameStateService gameStateService, ILevelXpGenerator xpGenerator, IWindowsService windows, IPerksGenerator perksGenerator)
         {
             _gameState = gameStateService.State;
             _xpGenerator = xpGenerator;
             _windows = windows;
+            _perksGenerator = perksGenerator;
+            
             _gameState.CurrentXpChanged += OnXpChanged;
             _gameState.OnNewPerkAdded += ResumeGame;
         }
@@ -41,9 +45,11 @@ namespace Infrastructure.DI.Services.Game
             _gameState.CurrentLevel++;
             _gameState.NeedXp = _xpGenerator.GenerateNextLevelXp(_gameState.CurrentLevel);
             
-            PauseGame();
-            
-            _windows.Open(WindowType.Perks);
+            if (_perksGenerator.HasPerks())
+            {
+                PauseGame();
+                _windows.Open(WindowType.Perks);   
+            }
         }
 
         public void PauseGame()

@@ -10,7 +10,7 @@ namespace Components
         
         private float _attackRadius;
         private float _attackCooldown;
-        private int _damage;
+        protected int CurrentDamage;
 
         private readonly Collider2D[] _hits = new Collider2D[8];
         private int _layerMask;
@@ -63,7 +63,7 @@ namespace Components
             var size = Hit();
             for (int i = 0; i < size; i++)
             {
-                _hits[i].transform.parent.GetComponent<IHealth>().TakeDamage(_damage);
+                _hits[i].transform.parent.GetComponent<IHealth>().TakeDamage(Damage);
             }
         }
         
@@ -86,9 +86,10 @@ namespace Components
             }
         }
 
-        public int Damage
+        public virtual int Damage
         {
-            set => _damage = value;
+            set => CurrentDamage = value;
+            get => CurrentDamage;
         }
     }
 }

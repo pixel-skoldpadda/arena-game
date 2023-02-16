@@ -9,15 +9,16 @@ namespace Components.Movement
     {
         [SerializeField] private Rigidbody2D body2D;
         [SerializeField] private AnimatorWrapper animator;
-        
-        private float _speed;
+
         private bool _moving;
         private Vector2 _axis;
         private IGameManager _gameManager;
+        
+        protected float CurrentSpeed;
 
         protected abstract Vector2 GetAxis();
 
-        public void Construct(IGameManager gameManager)
+        protected void Construct(IGameManager gameManager)
         {
             _gameManager = gameManager;
             _gameManager.OnGamePaused += Pause;
@@ -42,7 +43,7 @@ namespace Components.Movement
         {
             if (_moving)
             {
-                body2D.MovePosition(body2D.position + _axis * (_speed * Time.fixedDeltaTime));   
+                body2D.MovePosition(body2D.position + _axis * (Speed * Time.fixedDeltaTime));   
             }
         }
 
@@ -58,9 +59,10 @@ namespace Components.Movement
             _moving = false;
         }
 
-        public float Speed
+        public virtual float Speed
         {
-            set => _speed = value;
+            get => CurrentSpeed;
+            set => CurrentSpeed = value;
         }
 
         protected void ResetAxis()

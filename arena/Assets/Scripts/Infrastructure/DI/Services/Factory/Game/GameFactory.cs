@@ -1,6 +1,7 @@
 ﻿using Components;
 using Components.Enemy;
 using Components.Movement;
+using Components.Player;
 using Infrastructure.DI.Services.AssetsManagement;
 using Infrastructure.DI.Services.Game;
 using Infrastructure.DI.Services.Items;
@@ -33,15 +34,17 @@ namespace Infrastructure.DI.Services.Factory.Game
             _playerGameObject = Object.Instantiate(characterItem.prefab, at, Quaternion.identity);
 
             PlayerMovement playerMovement = _playerGameObject.GetComponent<PlayerMovement>();
-            playerMovement.Construct(_gameManager);
+            playerMovement.Construct(_gameManager, _gameState);
             playerMovement.Speed = characterItem.speed;
 
-            Attack attack = _playerGameObject.GetComponent<Attack>();
+            PlayerAttack attack = _playerGameObject.GetComponent<PlayerAttack>();
+            attack.Construct(_gameState);
             attack.AttackCooldown = characterItem.attackCooldown;
             attack.AttackRadius = characterItem.attackRadius;
             attack.Damage = characterItem.damage;
 
             IHealth health = _playerGameObject.GetComponent<IHealth>();
+            ((PlayerHealth) health).Construct(_gameState);
             health.MaxHp = characterItem.health;
             
             return _playerGameObject;

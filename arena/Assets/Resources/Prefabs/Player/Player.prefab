@@ -91,8 +91,8 @@ GameObject:
   - component: {fileID: 4363880007610057644}
   - component: {fileID: 7226570895017107898}
   - component: {fileID: 4363880007610057645}
-  - component: {fileID: 3381480011154184056}
   - component: {fileID: 5477298925076794091}
+  - component: {fileID: 5296400907544191113}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -253,20 +253,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   body2D: {fileID: 4363880007610057643}
   animator: {fileID: 7226570895017107898}
---- !u!114 &3381480011154184056
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4363880007610057646}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff6463673e1f4bb68818a19b3bac5451, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  physicsLayerName: Enemy
-  animator: {fileID: 7226570895017107898}
 --- !u!114 &5477298925076794091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,6 +266,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   progressBar: {fileID: 3032789143228318150}
+--- !u!114 &5296400907544191113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4363880007610057646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66bf47aeab1743ea8546846adc7d760c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  physicsLayerName: Enemy
+  animator: {fileID: 7226570895017107898}
 --- !u!1 &6138506523463345549
 GameObject:
   m_ObjectHideFlags: 0

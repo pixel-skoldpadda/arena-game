@@ -13,9 +13,9 @@ namespace Infrastructure.DI
 
         private DiContainer() {}
 
-        public void Bind<TService>(TService implementaton) where TService : IService
+        public void Bind<TService>(TService implementation) where TService : IService
         {
-            Dependencies[typeof(TService)] = implementaton;
+            Dependencies[typeof(TService)] = implementation;
         }
 
         public TService Get<TService>() where TService : IService

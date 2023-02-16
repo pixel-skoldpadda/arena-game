@@ -2,10 +2,19 @@
 
 namespace Components
 {
+    // todo: Переработать систему лута
     public class LootPiece : MonoBehaviour
     {
+        [SerializeField] private int xpAmount;
+        
         private bool _picked;
-
+        private GameState _gameState;
+        
+        public void Construct(GameState gameState)
+        {
+            _gameState = gameState;
+        }
+        
         private void OnTriggerEnter2D(Collider2D col)
         {
             Pickup();
@@ -18,6 +27,7 @@ namespace Components
                 return;
             }
 
+            _gameState.CurrentXp += xpAmount;
             _picked = true;
             
             Destroy(gameObject);

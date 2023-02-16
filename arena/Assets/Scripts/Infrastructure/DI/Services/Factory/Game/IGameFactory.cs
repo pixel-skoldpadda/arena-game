@@ -11,5 +11,6 @@ namespace Infrastructure.DI.Services.Factory.Game
         GameObject CreateSpawner(Vector3 at);
         GameObject CreateXp(Vector3 at);
         FloatingText CreateFloatingText(Transform parent);
+        GameManager CreateGameManager();
     }
 }

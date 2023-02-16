@@ -6,9 +6,14 @@ public class GameState
     private int _coins;
     private int _deathCount;
     private int _currentLevel;
+    private int _currentXp;
+    private int _needXp;
         
     private Action _coinsChanged;
     private Action _deathCountChanged;
+    
+    private Action _currentLevelChanged;
+    private Action _currentXpChanged;
 
     public void IncrementDeathCounter()
     {
@@ -45,5 +50,43 @@ public class GameState
             _deathCount = value;
             _deathCountChanged?.Invoke();
         }
+    }
+
+    public int CurrentLevel
+    {
+        get => _currentLevel;
+        set
+        {
+            _currentLevel = value;
+            _currentLevelChanged?.Invoke();
+        }
+    }
+
+    public int CurrentXp
+    {
+        get => _currentXp;
+        set
+        {
+            _currentXp = value;
+            _currentXpChanged?.Invoke();
+        }
+    }
+
+    public int NeedXp
+    {
+        get => _needXp;
+        set => _needXp = value;
+    }
+
+    public Action CurrentLevelChanged
+    {
+        get => _currentLevelChanged;
+        set => _currentLevelChanged = value;
+    }
+
+    public Action CurrentXpChanged
+    {
+        get => _currentXpChanged;
+        set => _currentXpChanged = value;
     }
 }

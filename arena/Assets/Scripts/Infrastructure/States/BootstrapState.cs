@@ -3,6 +3,7 @@ using Infrastructure.DI.Services.AssetsManagement;
 using Infrastructure.DI.Services.Data;
 using Infrastructure.DI.Services.Factory.Game;
 using Infrastructure.DI.Services.Factory.Ui;
+using Infrastructure.DI.Services.Generator;
 using Infrastructure.DI.Services.Input;
 using Infrastructure.DI.Services.Items.Items;
 using Infrastructure.States.Interfaces;
@@ -45,6 +46,8 @@ namespace Infrastructure.States
             Debug.Log("Binding services.");
 
             _container.Bind(_gameStateMachine);
+            ILevelXpGenerator levelXpGenerator = new LevelXpGenerator();
+            _container.Bind(levelXpGenerator);
             
             IGameStateService gameStateService = new GameStateService();
             gameStateService.State = new GameState();
@@ -60,7 +63,11 @@ namespace Infrastructure.States
             _container.Bind(assetsProvider);
             
             _container.Bind<IUiFactory>(new UiFactory(assetsProvider, gameStateService));
-            _container.Bind<IGameFactory>(new GameFactory(assetsProvider, itemsService, gameStateService));
+            _container.Bind<IGameFactory>(new GameFactory(
+                assetsProvider, 
+                itemsService, 
+                gameStateService, 
+                levelXpGenerator));
         }
     }
 }

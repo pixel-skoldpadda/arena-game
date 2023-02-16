@@ -51,6 +51,9 @@ namespace Infrastructure.States
             GameObject player = CreatePlayer();
             CameraFollow(player);
             CreateSpawners();
+
+            GameManager gameManager = _gameFactory.CreateGameManager();
+            gameManager.InitStartLevel();
         }
 
         private void CreateSpawners()

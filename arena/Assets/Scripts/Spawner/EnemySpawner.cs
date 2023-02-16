@@ -1,10 +1,10 @@
-﻿using Infrastructure.DI.Services.Factory;
-using Infrastructure.DI.Services.Factory.Game;
+﻿using Infrastructure.DI.Services.Factory.Game;
 using Items;
 using UnityEngine;
 
 namespace Spawner
 {
+    // todo: Улучшить спавнеры
     public class EnemySpawner : MonoBehaviour
     {
         private EnemyType _type;
@@ -18,7 +18,10 @@ namespace Spawner
 
         public void SpawnEnemy()
         {
-            _gameFactory.CreateEnemy(_type, transform);
+            for (int i = 0; i < 5; i++)
+            {
+                _gameFactory.CreateEnemy(_type, transform);   
+            }
         }
     }
 }

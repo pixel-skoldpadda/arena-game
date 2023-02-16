@@ -3,7 +3,9 @@ using Components.Enemy;
 using Components.Movement;
 using Infrastructure.DI.Services.AssetsManagement;
 using Infrastructure.DI.Services.Data;
+using Infrastructure.DI.Services.Generator;
 using Infrastructure.DI.Services.Items.Items;
+using Infrastructure.States;
 using Items;
 using UnityEngine;
 
@@ -14,14 +16,16 @@ namespace Infrastructure.DI.Services.Factory.Game
         private readonly IAssetProvider _assets;
         private readonly IItemsService _items;
         private readonly GameState _gameState;
-        
+        private readonly ILevelXpGenerator _levelXpGenerator;
+
         private GameObject _playerGameObject;
         
-        public GameFactory(IAssetProvider assets, IItemsService items, IGameStateService gameStateService)
+        public GameFactory(IAssetProvider assets, IItemsService items, IGameStateService gameStateService, ILevelXpGenerator levelXpGenerator)
         {
             _assets = assets;
             _items = items;
             _gameState = gameStateService.State;
+            _levelXpGenerator = levelXpGenerator;
         }
 
         public GameObject CreatePlayer(Vector3 at)
@@ -81,7 +85,18 @@ namespace Infrastructure.DI.Services.Factory.Game
 
         public GameObject CreateXp(Vector3 at)
         {
-            return _assets.Instantiate(AssetsPath.XpPrefabPath, at);
+            GameObject xp = _assets.Instantiate(AssetsPath.XpPrefabPath, at);
+            xp.GetComponent<LootPiece>().Construct(_gameState);
+
+            return xp;
+        }
+
+        public GameManager CreateGameManager()
+        {
+            GameManager gameManager = _assets.Instantiate(AssetsPath.GameManagerPrefabPath).GetComponent<GameManager>();
+            gameManager.Construct(_gameState, _levelXpGenerator);
+
+            return gameManager;
         }
     }
 }

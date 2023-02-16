@@ -10,20 +10,27 @@ namespace Ui.HUD
         [SerializeField] private TextMeshProUGUI levelNumber;
         [SerializeField] private Image progress;
 
-        private int _currentLevel;
-        private int _currentXp;
-        private int _needXp;
-
-        private IGameStateService _gameStateService;
-        
-        private void UpdateProgress()
-        {
-            progress.fillAmount = (float)_currentXp / _needXp;
-        }
+        private GameState _gameState;
 
         public void Construct(IGameStateService gameStateService)
         {
-            _gameStateService = gameStateService;
+            _gameState = gameStateService.State;
+
+            UpdateLevel();
+
+            _gameState.CurrentLevelChanged += UpdateLevel;
+            _gameState.CurrentXpChanged += UpdateProgress;
+        }
+
+        private void UpdateLevel()
+        {
+            levelNumber.text = $"LV { _gameState.CurrentLevel}";
+            UpdateProgress();
+        }
+        
+        private void UpdateProgress()
+        {
+            progress.fillAmount = (float)_gameState.CurrentXp / _gameState.NeedXp;
         }
     }
 }

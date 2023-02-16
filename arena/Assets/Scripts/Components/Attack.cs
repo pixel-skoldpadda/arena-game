@@ -1,5 +1,4 @@
-﻿using Infrastructure.DI.Services.Factory;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Components
 {
@@ -57,7 +56,10 @@ namespace Components
 
             _cooldown = _attackCooldown;
             animator.PLayAttack();
+        }
 
+        public void OnAttack()
+        {
             var size = Hit();
             for (int i = 0; i < size; i++)
             {

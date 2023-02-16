@@ -23,7 +23,5 @@ namespace Items
         
         [Range(.5f, 5f)]
         public float speed;
-
-        public int xp;
     }
 }

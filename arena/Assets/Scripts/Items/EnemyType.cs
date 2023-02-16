@@ -4,6 +4,7 @@
     {
         SkeletonArcher,
         SkeletonSpearman,
-        SkeletonWarrior
+        SkeletonWarrior,
+        Slime,
     }
 }

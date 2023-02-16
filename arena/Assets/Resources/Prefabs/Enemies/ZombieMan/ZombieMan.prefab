@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6183678990894928622}
   - component: {fileID: 6183678990894927121}
+  - component: {fileID: 6183678990894928618}
   - component: {fileID: 6183678990894928620}
-  - component: {fileID: 3083634744053502779}
   - component: {fileID: 6183678990894928621}
   - component: {fileID: 198223553332779324}
   - component: {fileID: 6183678990894928623}
@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 8956362284788748505}
   - component: {fileID: 1095157079954721554}
   m_Layer: 0
-  m_Name: Slime
+  m_Name: ZombieMan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,17 +83,33 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 377438365, guid: 70aafeae34e4621458f68249efc00eb6, type: 3}
+  m_Sprite: {fileID: 588479730, guid: d3c8187f83e8c4c49967e74a0c823ef8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.53, y: 0.58}
+  m_Size: {x: 0.26, y: 0.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!70 &6183678990894928618
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6183678990894927120}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.04, y: 0}
+  m_Size: {x: 0.27, y: 0.64}
+  m_Direction: 0
 --- !u!50 &6183678990894928620
 Rigidbody2D:
   serializedVersion: 4
@@ -115,22 +131,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &3083634744053502779
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6183678990894927120}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.25
 --- !u!95 &6183678990894928621
 Animator:
   serializedVersion: 5
@@ -141,7 +141,7 @@ Animator:
   m_GameObject: {fileID: 6183678990894927120}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ed7bb3250af5e2a46b337b2dd6e65945, type: 2}
+  m_Controller: {fileID: 9100000, guid: 19d9fb1d0628935489347f7e97d37f73, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   body2D: {fileID: 6183678990894928620}
   animator: {fileID: 198223553332779324}
-  minDistance: 0.2
+  minDistance: 0.5
 --- !u!114 &7434024778981089845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,4 +280,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.25
+  m_Radius: 0.35

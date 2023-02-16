@@ -6,5 +6,6 @@
         SkeletonSpearman,
         SkeletonWarrior,
         Slime,
+        ZombieMan
     }
 }

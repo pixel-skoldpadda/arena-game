@@ -30,5 +30,19 @@ namespace Components.Player
                 return damageRadiusPerk != null ? CurrentAttackRadius + damageRadiusPerk.radiusAmount : CurrentAttackRadius;
             }
         }
+
+        public override float AttackCooldown
+        {
+            set
+            {
+                CurrentAttackCooldown = value;
+                Cooldown = CurrentAttackCooldown;
+            }
+            get
+            {
+                AttackCooldownPerk cooldownPerk = _gameState.GetPerk<AttackCooldownPerk>();
+                return cooldownPerk != null ? CurrentAttackCooldown - cooldownPerk.cooldownAmount : CurrentAttackCooldown;
+            }
+        }
     }
 }

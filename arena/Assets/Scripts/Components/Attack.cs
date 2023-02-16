@@ -7,19 +7,19 @@ namespace Components
     {
         [SerializeField] private string physicsLayerName;
         [SerializeField] private AnimatorWrapper animator;
-
-        private float _attackCooldown;
+        
+        private readonly Collider2D[] _hits = new Collider2D[8];
+        private int _layerMask;
+        protected float Cooldown;
+        
+        protected float CurrentAttackCooldown;
         protected float CurrentAttackRadius;
         protected int CurrentDamage;
 
-        private readonly Collider2D[] _hits = new Collider2D[8];
-        private int _layerMask;
-        private float _cooldown;
-        
         private void Awake()
         {
             _layerMask = 1 << LayerMask.NameToLayer(physicsLayerName);
-            _cooldown = _attackCooldown;
+            Cooldown = CurrentAttackCooldown;
         }
 
         private void Update()
@@ -38,13 +38,13 @@ namespace Components
         {
             if (!CooldownIsUp())
             {
-                _cooldown -= Time.deltaTime;
+                Cooldown -= Time.deltaTime;
             }
         }
 
         private bool CooldownIsUp()
         {
-            return _cooldown <= 0f;
+            return Cooldown <= 0f;
         }
 
         private void TryAttack()
@@ -54,7 +54,7 @@ namespace Components
                 return;
             }
 
-            _cooldown = _attackCooldown;
+            Cooldown = AttackCooldown;
             animator.PLayAttack();
         }
 
@@ -72,19 +72,20 @@ namespace Components
             return Physics2D.OverlapCircleNonAlloc(transform.position, AttackRadius, _hits, _layerMask);
         }
 
-        public  virtual float AttackRadius
+        public virtual float AttackRadius
         {
             set => CurrentAttackRadius = value;
             get => CurrentAttackRadius;
         }
 
-        public float AttackCooldown
+        public virtual float AttackCooldown
         {
             set
             {
-                _attackCooldown = value;
-                _cooldown = value;
+                CurrentAttackCooldown = value;
+                Cooldown = value;
             }
+            get => CurrentAttackCooldown;
         }
 
         public virtual int Damage

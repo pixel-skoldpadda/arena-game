@@ -1,4 +1,5 @@
-﻿using Infrastructure.DI.Services.Perks;
+﻿using System.Collections.Generic;
+using Infrastructure.DI.Services.Perks;
 using Infrastructure.DI.Services.StateService;
 using Items.Perks;
 using UnityEngine;
@@ -23,14 +24,18 @@ namespace Ui.Windows
 
         private void Init()
         {
-            Perk perk = _perksGenerator.GenerateRandomPerk();
-            PerkGridItem perkGridItem = Instantiate(girdItemPrefab, grid.transform).GetComponent<PerkGridItem>();
-            perkGridItem.Construct(this);
-            perkGridItem.Init(perk);
+            List<Perk> perks = _perksGenerator.GeneratePerks();
+            foreach (Perk perk in perks)
+            {
+                PerkGridItem perkGridItem = Instantiate(girdItemPrefab, grid.transform).GetComponent<PerkGridItem>();
+                perkGridItem.Construct(this);
+                perkGridItem.Init(perk);
+            }
         }
 
         public void OnPerkTaken(Perk perk)
         {
+            _perksGenerator.RemoveChosenPerk(perk);
             _gameState.AddPerk(perk);
             Close();
             

@@ -67,9 +67,13 @@ namespace Infrastructure.DI.Services.Game
         
         public void InitStartLevel()
         {
+            _perksGenerator.Init();
+            
             _gameState.CurrentLevel = 0;
             _gameState.NeedXp = _xpGenerator.GenerateNextLevelXp(_gameState.CurrentLevel);
-            _gameState.IsGameRunning = true;
+            _gameState.IsGameRunning = false;
+            
+            _windows.Open(WindowType.Perks);
         }
     }
 }

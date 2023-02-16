@@ -7,7 +7,7 @@ namespace Components.Movement
     public class PlayerMovement : Movement
     {
         private IInputService _inputService;
-        
+
         private void Awake()
         {
             _inputService = DiContainer.Container.Get<IInputService>();

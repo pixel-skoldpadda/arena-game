@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Infrastructure.DI;
 using Infrastructure.DI.Services.Factory.Game;
 using Infrastructure.DI.Services.Factory.Ui;
+using Infrastructure.DI.Services.Game;
 using Infrastructure.States.Interfaces;
 using Ui;
 using IExitableState = Infrastructure.States.Interfaces.IExitableState;
@@ -24,7 +25,8 @@ namespace Infrastructure.States
                 [typeof(BootstrapState)] = new BootstrapState(container, this, sceneLoader),
                 [typeof(LoadSceneState)] = new LoadSceneState(this, 
                     container.Get<IGameFactory>(), 
-                    container.Get<IUiFactory>(), 
+                    container.Get<IUiFactory>(),
+                    container.Get<IGameManager>(),
                     sceneLoader,
                     loadingCurtain),
                 [typeof(GameLoopState)] = new GameLoopState()

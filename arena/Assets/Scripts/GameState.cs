@@ -15,9 +15,16 @@ public class GameState
     private Action _currentLevelChanged;
     private Action _currentXpChanged;
 
+    private Action _onNewPerkAdded;
+    
     public void IncrementDeathCounter()
     {
         DeathCount++;
+    }
+
+    public void AddPerk()
+    {
+        _onNewPerkAdded?.Invoke();
     }
     
     public Action CoinsChanged
@@ -88,5 +95,11 @@ public class GameState
     {
         get => _currentXpChanged;
         set => _currentXpChanged = value;
+    }
+
+    public Action OnNewPerkAdded
+    {
+        get => _onNewPerkAdded;
+        set => _onNewPerkAdded = value;
     }
 }

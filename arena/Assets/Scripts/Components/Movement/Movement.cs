@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Infrastructure.DI.Services.Game;
+using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
 
 namespace Components.Movement
@@ -12,9 +13,17 @@ namespace Components.Movement
         private float _speed;
         private bool _moving;
         private Vector2 _axis;
+        private IGameManager _gameManager;
 
         protected abstract Vector2 GetAxis();
 
+        public void Construct(IGameManager gameManager)
+        {
+            _gameManager = gameManager;
+            _gameManager.OnGamePaused += Pause;
+            _gameManager.OnGameResumed += Resume;
+        }
+        
         private void Start()
         {
             _moving = true;
@@ -37,9 +46,10 @@ namespace Components.Movement
             }
         }
 
-        protected void ResetAxis()
+        private void OnDestroy()
         {
-            _axis = Vector2.zero;
+            _gameManager.OnGamePaused -= Pause;
+            _gameManager.OnGameResumed -= Resume;
         }
 
         public void Pause()
@@ -48,15 +58,20 @@ namespace Components.Movement
             _moving = false;
         }
 
-        public void Resume()
-        {
-            body2D.simulated = true;
-            _moving = true;
-        }
-        
         public float Speed
         {
             set => _speed = value;
+        }
+
+        protected void ResetAxis()
+        {
+            _axis = Vector2.zero;
+        }
+
+        private void Resume()
+        {
+            body2D.simulated = true;
+            _moving = true;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Components.Player;
 using Infrastructure.DI.Services.Factory.Game;
 using Infrastructure.DI.Services.Factory.Ui;
+using Infrastructure.DI.Services.Game;
 using Infrastructure.States.Interfaces;
 using Spawner;
 using Ui;
@@ -18,8 +19,9 @@ namespace Infrastructure.States
         private readonly IUiFactory _uiFactory;
         private readonly SceneLoader _sceneLoader;
         private readonly LoadingCurtain _loadingCurtain;
+        private readonly IGameManager _gameManager;
         
-        public LoadSceneState(GameStateMachine stateMachine, IGameFactory gameFactory, IUiFactory uiFactory, SceneLoader sceneLoader, 
+        public LoadSceneState(GameStateMachine stateMachine, IGameFactory gameFactory, IUiFactory uiFactory, IGameManager gameManager, SceneLoader sceneLoader, 
             LoadingCurtain loadingCurtain)
         {
             _stateMachine = stateMachine;
@@ -27,6 +29,7 @@ namespace Infrastructure.States
             _uiFactory = uiFactory;
             _sceneLoader = sceneLoader;
             _loadingCurtain = loadingCurtain;
+            _gameManager = gameManager;
         }
 
         public void Enter(string sceneName)
@@ -47,13 +50,13 @@ namespace Infrastructure.States
         {
             Debug.Log("Init game world.");
 
+            _uiFactory.CreateUiRoot();
             _uiFactory.CreateHud();
             GameObject player = CreatePlayer();
             CameraFollow(player);
             CreateSpawners();
-
-            GameManager gameManager = _gameFactory.CreateGameManager();
-            gameManager.InitStartLevel();
+            
+            _gameManager.InitStartLevel();
         }
 
         private void CreateSpawners()

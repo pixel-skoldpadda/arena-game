@@ -1,11 +1,13 @@
 ﻿using Infrastructure.DI;
 using Infrastructure.DI.Services.AssetsManagement;
-using Infrastructure.DI.Services.Data;
 using Infrastructure.DI.Services.Factory.Game;
 using Infrastructure.DI.Services.Factory.Ui;
+using Infrastructure.DI.Services.Game;
 using Infrastructure.DI.Services.Generator;
 using Infrastructure.DI.Services.Input;
-using Infrastructure.DI.Services.Items.Items;
+using Infrastructure.DI.Services.Items;
+using Infrastructure.DI.Services.StateService;
+using Infrastructure.DI.Services.Windows;
 using Infrastructure.States.Interfaces;
 using UnityEngine;
 
@@ -62,12 +64,20 @@ namespace Infrastructure.States
             IAssetProvider assetsProvider = new AssetsProvider();
             _container.Bind(assetsProvider);
             
-            _container.Bind<IUiFactory>(new UiFactory(assetsProvider, gameStateService));
+            IUiFactory uiFactory = new UiFactory(assetsProvider, gameStateService, itemsService);
+            _container.Bind(uiFactory);
+
+            IWindowsService windowsService = new WindowsService(uiFactory);
+            _container.Bind(windowsService);
+            
+            IGameManager gameManager = new GameManager(gameStateService, levelXpGenerator, windowsService);
+            _container.Bind(gameManager);
+            
             _container.Bind<IGameFactory>(new GameFactory(
                 assetsProvider, 
                 itemsService, 
                 gameStateService, 
-                levelXpGenerator));
+                gameManager));
         }
     }
 }

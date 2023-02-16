@@ -1,4 +1,4 @@
-﻿namespace Infrastructure.DI.Services.Data
+﻿namespace Infrastructure.DI.Services.StateService
 {
     public class GameStateService : IGameStateService
     {

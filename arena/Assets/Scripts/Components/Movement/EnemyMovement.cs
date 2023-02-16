@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Infrastructure.DI.Services.Game;
+using UnityEngine;
 
 namespace Components.Movement
 {
@@ -7,9 +8,11 @@ namespace Components.Movement
         [SerializeField] private float minDistance;
 
         private Transform _playerTransform;
-
-        public void Construct(Transform playerTransform)
+        
+        public void Construct(Transform playerTransform, IGameManager gameManager)
         {
+            base.Construct(gameManager);
+            
             _playerTransform = playerTransform;
         }
 

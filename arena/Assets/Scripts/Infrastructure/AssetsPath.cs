@@ -9,6 +9,6 @@
         public const string XpPrefabPath = "Prefabs/Loot/Expiriens/Xp";
         public const string FloatingText = "Prefabs/FloatingText/FloatingText";
         public const string HudPrefabPath = "Prefabs/Ui/Hud";
-        public const string GameManagerPrefabPath = "Prefabs/GameManager";
+        public const string UiRootPrefabPath = "Prefabs/Ui/UiRoot";
     }
 }   

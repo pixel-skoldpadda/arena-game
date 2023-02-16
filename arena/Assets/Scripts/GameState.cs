@@ -23,6 +23,10 @@ public class GameState
     
     private Dictionary<Type, Perk> _activePerks = new();
 
+    private bool _isGameRunning;
+    private Action _onGamePaused;
+    private Action _onGameResumed;
+
     public void IncrementDeathCounter()
     {
         DeathCount++;
@@ -130,6 +134,35 @@ public class GameState
         set => _onHealthAdded = value;
     }
 
+    public Action OnGamePaused
+    {
+        get => _onGamePaused;
+        set => _onGamePaused = value;
+    }
+
+    public Action OnGameResumed
+    {
+        get => _onGameResumed;
+        set => _onGameResumed = value;
+    }
+
+    public bool IsGameRunning
+    {
+        get => _isGameRunning;
+        set
+        {
+            _isGameRunning = value;
+            if (_isGameRunning)
+            {
+                _onGameResumed.Invoke();
+            }
+            else
+            {
+                _onGamePaused.Invoke();
+            }
+        }
+    }
+    
     public void AddLoot(CountedLoot loot)
     {
         switch (loot.type)

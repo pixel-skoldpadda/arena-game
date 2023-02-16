@@ -1,6 +1,4 @@
-﻿using Infrastructure.DI.Services.Game;
-using UnityEngine;
-using Vector2 = UnityEngine.Vector2;
+﻿using UnityEngine;
 
 namespace Components.Movement
 {
@@ -12,17 +10,17 @@ namespace Components.Movement
 
         private bool _moving;
         private Vector2 _axis;
-        private IGameManager _gameManager;
-        
+
+        protected GameState GameState;
         protected float CurrentSpeed;
 
         protected abstract Vector2 GetAxis();
 
-        protected void Construct(IGameManager gameManager)
+        public void Construct(GameState gameState)
         {
-            _gameManager = gameManager;
-            _gameManager.OnGamePaused += Pause;
-            _gameManager.OnGameResumed += Resume;
+            GameState = gameState;
+            GameState.OnGamePaused += Pause;
+            GameState.OnGameResumed += Resume;
         }
         
         private void Start()
@@ -49,8 +47,8 @@ namespace Components.Movement
 
         private void OnDestroy()
         {
-            _gameManager.OnGamePaused -= Pause;
-            _gameManager.OnGameResumed -= Resume;
+            GameState.OnGamePaused -= Pause;
+            GameState.OnGameResumed -= Resume;
         }
 
         public void Pause()

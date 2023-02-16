@@ -1,5 +1,4 @@
-﻿using Infrastructure.DI.Services.Game;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Components.Movement
 {
@@ -9,9 +8,9 @@ namespace Components.Movement
 
         private Transform _playerTransform;
         
-        public void Construct(Transform playerTransform, IGameManager gameManager)
+        public void Construct(Transform playerTransform, GameState gameState)
         {
-            base.Construct(gameManager);
+            base.Construct(gameState);
             
             _playerTransform = playerTransform;
         }

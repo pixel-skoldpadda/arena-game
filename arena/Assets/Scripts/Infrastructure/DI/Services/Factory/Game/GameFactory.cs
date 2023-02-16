@@ -36,7 +36,7 @@ namespace Infrastructure.DI.Services.Factory.Game
             _playerGameObject = Object.Instantiate(characterItem.prefab, at, Quaternion.identity);
 
             PlayerMovement playerMovement = _playerGameObject.GetComponent<PlayerMovement>();
-            playerMovement.Construct(_gameManager, _gameState);
+            playerMovement.Construct(_gameState);
             playerMovement.Speed = characterItem.speed;
 
             PlayerAttack attack = _playerGameObject.GetComponent<PlayerAttack>();
@@ -61,7 +61,7 @@ namespace Infrastructure.DI.Services.Factory.Game
             GameObject enemy = Object.Instantiate(enemyItem.prefab, parent.position, Quaternion.identity, parent);
 
             EnemyMovement enemyMovement = enemy.GetComponent<EnemyMovement>();
-            enemyMovement.Construct(_playerGameObject.transform, _gameManager);
+            enemyMovement.Construct(_playerGameObject.transform, _gameState);
             enemyMovement.Speed = enemyItem.speed;
 
             Attack attack = enemy.GetComponent<Attack>();

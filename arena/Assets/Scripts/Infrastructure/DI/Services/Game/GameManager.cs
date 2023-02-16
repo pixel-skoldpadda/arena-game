@@ -1,5 +1,4 @@
-﻿using System;
-using Infrastructure.DI.Services.Generator;
+﻿using Infrastructure.DI.Services.Generator;
 using Infrastructure.DI.Services.Perks;
 using Infrastructure.DI.Services.StateService;
 using Infrastructure.DI.Services.Windows;
@@ -15,9 +14,6 @@ namespace Infrastructure.DI.Services.Game
         private readonly ILevelXpGenerator _xpGenerator;
         private readonly IWindowsService _windows;
         private readonly IPerksGenerator _perksGenerator;
-        
-        private Action _onGamePaused;
-        private Action _onGameResumed;
 
         public GameManager(IGameStateService gameStateService, ILevelXpGenerator xpGenerator, IWindowsService windows, IPerksGenerator perksGenerator)
         {
@@ -54,12 +50,12 @@ namespace Infrastructure.DI.Services.Game
 
         public void PauseGame()
         {
-            _onGamePaused?.Invoke();
+            _gameState.IsGameRunning = false;
         }
 
         public void ResumeGame()
         {
-            _onGameResumed?.Invoke();
+            _gameState.IsGameRunning = true;
         }
 
         public void OnPLayerDie()
@@ -73,18 +69,7 @@ namespace Infrastructure.DI.Services.Game
         {
             _gameState.CurrentLevel = 0;
             _gameState.NeedXp = _xpGenerator.GenerateNextLevelXp(_gameState.CurrentLevel);
-        }
-
-        public Action OnGamePaused
-        {
-            get => _onGamePaused;
-            set => _onGamePaused = value;
-        }
-
-        public Action OnGameResumed
-        {
-            get => _onGameResumed;
-            set => _onGameResumed = value;
+            _gameState.IsGameRunning = true;
         }
     }
 }

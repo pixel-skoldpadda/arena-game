@@ -7,9 +7,9 @@ namespace Components
     {
         [SerializeField] private string physicsLayerName;
         [SerializeField] private AnimatorWrapper animator;
-        
-        private float _attackRadius;
+
         private float _attackCooldown;
+        protected float CurrentAttackRadius;
         protected int CurrentDamage;
 
         private readonly Collider2D[] _hits = new Collider2D[8];
@@ -31,7 +31,7 @@ namespace Components
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.magenta;
-            Gizmos.DrawWireSphere(transform.position, _attackRadius);
+            Gizmos.DrawWireSphere(transform.position, AttackRadius);
         }
         
         private void UpdateCooldown()
@@ -69,12 +69,13 @@ namespace Components
         
         private int Hit()
         {
-            return Physics2D.OverlapCircleNonAlloc(transform.position, _attackRadius, _hits, _layerMask);
+            return Physics2D.OverlapCircleNonAlloc(transform.position, AttackRadius, _hits, _layerMask);
         }
 
-        public float AttackRadius
+        public  virtual float AttackRadius
         {
-            set => _attackRadius = value;
+            set => CurrentAttackRadius = value;
+            get => CurrentAttackRadius;
         }
 
         public float AttackCooldown

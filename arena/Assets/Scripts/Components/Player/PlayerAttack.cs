@@ -20,5 +20,15 @@ namespace Components.Player
                 return damagePerk != null ? CurrentDamage + damagePerk.damageAmount : CurrentDamage;
             }
         }
+
+        public override float AttackRadius
+        {
+            set => CurrentAttackRadius = value;
+            get
+            {
+                DamageRadiusPerk damageRadiusPerk = _gameState.GetPerk<DamageRadiusPerk>();
+                return damageRadiusPerk != null ? CurrentAttackRadius + damageRadiusPerk.radiusAmount : CurrentAttackRadius;
+            }
+        }
     }
 }

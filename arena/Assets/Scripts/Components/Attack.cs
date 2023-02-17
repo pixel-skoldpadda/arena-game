@@ -56,10 +56,7 @@ namespace Components
 
             Cooldown = AttackCooldown;
             animator.PLayAttack();
-        }
-
-        public void OnAttack()
-        {
+            
             var size = Hit();
             if (size > 0)
             {
@@ -74,7 +71,7 @@ namespace Components
                 }
             }
         }
-        
+
         private int Hit()
         {
             return Physics2D.OverlapCircleNonAlloc(transform.position, AttackRadius, _hits, _layerMask);

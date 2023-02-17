@@ -26,7 +26,7 @@ namespace Components.Player
             set => CurrentAttackRadius = value;
             get
             {
-                DamageRadiusPerk damageRadiusPerk = _gameState.GetPerk<DamageRadiusPerk>();
+                DamageRadiusPerk damageRadiusPerk = _gameState?.GetPerk<DamageRadiusPerk>();
                 return damageRadiusPerk != null ? CurrentAttackRadius + damageRadiusPerk.radiusAmount : CurrentAttackRadius;
             }
         }

@@ -14,9 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   prefab: {fileID: 6183678990894927120, guid: 5ac085bb7d82fa741aba69cfb72347f5, type: 3}
-  health: 100
-  damage: 15
-  attackCooldown: 5
+  health: 80
+  damage: 30
+  attackCooldown: 6
   attackRadius: 0.35
   speed: 0.5
-  xp: 100

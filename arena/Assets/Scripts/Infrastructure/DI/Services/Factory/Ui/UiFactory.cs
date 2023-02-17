@@ -46,6 +46,7 @@ namespace Infrastructure.DI.Services.Factory.Ui
             hud.CoinsContainer.Construct(_gameStateService);
             hud.LevelProgressBar.Construct(_gameStateService);
             hud.HudTimer.Construct(_gameStateService);
+            hud.ActivePerksContainer.Construct(_gameStateService);
             
             return hudGameObject;
         }

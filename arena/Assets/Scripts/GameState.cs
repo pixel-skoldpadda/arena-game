@@ -18,7 +18,7 @@ public class GameState
     private Action _currentLevelChanged;
     private Action _currentXpChanged;
 
-    private Action _onNewPerkAdded;
+    private Action<Perk> _onNewPerkAdded;
     private Action<int> _onHealthAdded;
     
     private Dictionary<Type, Perk> _activePerks = new();
@@ -35,7 +35,7 @@ public class GameState
     public void AddPerk(Perk perk)
     {
         _activePerks[perk.GetType()] = perk;
-        _onNewPerkAdded?.Invoke();
+        _onNewPerkAdded?.Invoke(perk);
     }
 
     public TPerk GetPerk<TPerk>() where TPerk : Perk
@@ -122,7 +122,7 @@ public class GameState
         set => _currentXpChanged = value;
     }
 
-    public Action OnNewPerkAdded
+    public Action<Perk> OnNewPerkAdded
     {
         get => _onNewPerkAdded;
         set => _onNewPerkAdded = value;

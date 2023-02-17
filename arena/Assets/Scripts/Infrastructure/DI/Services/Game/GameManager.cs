@@ -23,7 +23,7 @@ namespace Infrastructure.DI.Services.Game
             _perksGenerator = perksGenerator;
             
             _gameState.CurrentXpChanged += OnXpChanged;
-            _gameState.OnNewPerkAdded += ResumeGame;
+            _gameState.OnNewPerkAdded += _ => ResumeGame();
         }
         
         private void OnXpChanged()

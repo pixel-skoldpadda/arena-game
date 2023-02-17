@@ -169,7 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 3
   amount: 5
-  cooldown: 25
+  cooldown: 35
 --- !u!1 &169190667
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,8 +215,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 4
-  amount: 7
-  cooldown: 35
+  amount: 2
+  cooldown: 45
 --- !u!1 &343635322
 GameObject:
   m_ObjectHideFlags: 0
@@ -42153,8 +42153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  amount: 5
-  cooldown: 35
+  amount: 3
+  cooldown: 45
 --- !u!1 &743586217
 GameObject:
   m_ObjectHideFlags: 0
@@ -46586,8 +46586,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 4
-  amount: 7
-  cooldown: 35
+  amount: 4
+  cooldown: 45
 --- !u!4 &963194228 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 83156805751495290, guid: 972215fd974098a4e987fed7d9ac01bf, type: 3}
@@ -48867,7 +48867,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   amount: 3
-  cooldown: 45
+  cooldown: 60
 --- !u!1 &1652370377
 GameObject:
   m_ObjectHideFlags: 0
@@ -48947,7 +48947,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   amount: 3
-  cooldown: 35
+  cooldown: 45
 --- !u!1 &1771223100
 GameObject:
   m_ObjectHideFlags: 0
@@ -48993,8 +48993,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  amount: 5
-  cooldown: 35
+  amount: 3
+  cooldown: 60
 --- !u!1 &1824282084
 GameObject:
   m_ObjectHideFlags: 0
@@ -49041,7 +49041,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 3
   amount: 5
-  cooldown: 25
+  cooldown: 35
 --- !u!1 &1984144227
 GameObject:
   m_ObjectHideFlags: 0
@@ -49256,7 +49256,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   amount: 3
-  cooldown: 45
+  cooldown: 60
 --- !u!1001 &83156805862061838
 PrefabInstance:
   m_ObjectHideFlags: 0

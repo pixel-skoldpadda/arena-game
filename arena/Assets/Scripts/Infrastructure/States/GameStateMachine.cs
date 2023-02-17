@@ -4,6 +4,7 @@ using Infrastructure.DI;
 using Infrastructure.DI.Services.Factory.Game;
 using Infrastructure.DI.Services.Factory.Ui;
 using Infrastructure.DI.Services.Game;
+using Infrastructure.DI.Services.Items;
 using Infrastructure.DI.Services.StateService;
 using Infrastructure.States.Interfaces;
 using Ui;
@@ -30,7 +31,8 @@ namespace Infrastructure.States
                     container.Get<IGameManager>(),
                     sceneLoader,
                     loadingCurtain,
-                    container.Get<IGameStateService>()),
+                    container.Get<IGameStateService>(),
+                    container.Get<IItemsService>()),
                 [typeof(GameLoopState)] = new GameLoopState(),
                 [typeof(LoadSceneState)] = new LoadSceneState(sceneLoader)
             };

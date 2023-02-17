@@ -1,7 +1,9 @@
-﻿using Components.Player;
+﻿using System.Collections.Generic;
+using Components.Player;
 using Infrastructure.DI.Services.Factory.Game;
 using Infrastructure.DI.Services.Factory.Ui;
 using Infrastructure.DI.Services.Game;
+using Infrastructure.DI.Services.Items;
 using Infrastructure.DI.Services.StateService;
 using Infrastructure.States.Interfaces;
 using Spawner;
@@ -22,9 +24,10 @@ namespace Infrastructure.States
         private readonly LoadingCurtain _loadingCurtain;
         private readonly IGameManager _gameManager;
         private readonly GameState _gameState;
+        private readonly IItemsService _items;
         
         public LoadLevelState(GameStateMachine stateMachine, IGameFactory gameFactory, IUiFactory uiFactory, IGameManager gameManager, SceneLoader sceneLoader, 
-            LoadingCurtain loadingCurtain, IGameStateService gameStateService)
+            LoadingCurtain loadingCurtain, IGameStateService gameStateService, IItemsService items)
         {
             _stateMachine = stateMachine;
             _gameFactory = gameFactory;
@@ -33,6 +36,7 @@ namespace Infrastructure.States
             _loadingCurtain = loadingCurtain;
             _gameManager = gameManager;
             _gameState = gameStateService.State;
+            _items = items;
         }
 
         public void Enter(string sceneName)
@@ -64,12 +68,11 @@ namespace Infrastructure.States
 
         private void CreateSpawners()
         {
-            GameObject[] markers = GameObject.FindGameObjectsWithTag("Spawner");
-            foreach (GameObject marker in markers)
+            List<SpawnerData> spawnerData = _items.Spawners.SpawnersData;
+            foreach (SpawnerData data in spawnerData)
             {
-                SpawnerMarker spawnerMarker = marker.GetComponent<SpawnerMarker>();
-                EnemySpawner enemySpawner = _gameFactory.CreateSpawner(marker.transform.position).GetComponent<EnemySpawner>();
-                enemySpawner.Construct(_gameFactory, spawnerMarker.EnemyType, spawnerMarker.Amount, spawnerMarker.Cooldown, _gameState);
+                EnemySpawner enemySpawner = _gameFactory.CreateSpawner(data.Position).GetComponent<EnemySpawner>();
+                enemySpawner.Construct(_gameFactory, data.EnemyType, data.Amount, data.Cooldown, _gameState);
             }
         }
         

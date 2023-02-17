@@ -25,14 +25,14 @@ namespace Components.Loot
 
         private void Start()
         {
-            enemyDeath.OnDie += SpawnXp;
+            enemyDeath.OnDie += SpawnLoot;
         }
         
-        private void SpawnXp()
+        private void SpawnLoot()
         {
             List<LootType> types = Enum.GetValues(typeof(LootType)).Cast<LootType>().ToList();
             Random random = new Random();
-            int index = random.Next(0, types.Count - 1);
+            int index = random.Next(types.Count );
             _gameFactory.CreateLoot(_items.ForLoot(types[index]), transform.position);
         }
     }

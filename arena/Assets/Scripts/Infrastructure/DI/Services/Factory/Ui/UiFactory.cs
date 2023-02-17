@@ -49,8 +49,6 @@ namespace Infrastructure.DI.Services.Factory.Ui
             _hud.HudTimer.Construct(_gameStateService);
             _hud.ActivePerksContainer.Construct(_gameStateService);
             _hud.PauseGameButton.Construct(_gameStateService);
-            
-            return hudGameObject;
         }
 
         public PerksWindow CreatePerksWindow()

@@ -5,6 +5,8 @@ namespace Components
 {
     public class LootPiece : MonoBehaviour
     {
+        [SerializeField] private AudioSource audioSource;
+        
         private bool _picked;
         private GameState _gameState;
         private CountedLoot _loot;
@@ -26,11 +28,12 @@ namespace Components
             {
                 return;
             }
-
+            
+            audioSource.Play();
             _gameState.AddLoot(_loot);
             _picked = true;
             
-            Destroy(gameObject);
+            Destroy(gameObject, .3f);
         }
     }
 }

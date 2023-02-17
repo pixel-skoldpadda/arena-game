@@ -7,7 +7,7 @@ namespace Ui.Windows
     {
         private Action _onWindowClosed;
 
-        protected void Close()
+        protected virtual void Close()
         {
             _onWindowClosed?.Invoke();
             Destroy(gameObject);

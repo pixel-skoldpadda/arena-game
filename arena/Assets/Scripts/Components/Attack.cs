@@ -7,6 +7,7 @@ namespace Components
     {
         [SerializeField] private string physicsLayerName;
         [SerializeField] private AnimatorWrapper animator;
+        [SerializeField] private AudioSource audioSource;
         
         private readonly Collider2D[] _hits = new Collider2D[8];
         private int _layerMask;
@@ -19,7 +20,6 @@ namespace Components
         private void Awake()
         {
             _layerMask = 1 << LayerMask.NameToLayer(physicsLayerName);
-            Cooldown = CurrentAttackCooldown;
         }
 
         private void Update()
@@ -61,9 +61,17 @@ namespace Components
         public void OnAttack()
         {
             var size = Hit();
-            for (int i = 0; i < size; i++)
+            if (size > 0)
             {
-                _hits[i].transform.parent.GetComponent<IHealth>().TakeDamage(Damage);
+                if (audioSource != null)
+                {
+                    audioSource.Play();    
+                }
+                
+                for (int i = 0; i < size; i++)
+                {
+                    _hits[i].transform.parent.GetComponent<IHealth>().TakeDamage(Damage);
+                }
             }
         }
         

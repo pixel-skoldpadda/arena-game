@@ -27,6 +27,9 @@ public class GameState
     private Action _onGamePaused;
     private Action _onGameResumed;
 
+    private float _musicVolume = .5f;
+    private float _effectsVolume = .5f;
+    
     public void IncrementDeathCounter()
     {
         DeathCount++;
@@ -162,7 +165,19 @@ public class GameState
             }
         }
     }
-    
+
+    public float MusicVolume
+    {
+        get => _musicVolume;
+        set => _musicVolume = value;
+    }
+
+    public float EffectsVolume
+    {
+        get => _effectsVolume;
+        set => _effectsVolume = value;
+    }
+
     public void AddLoot(CountedLoot loot)
     {
         switch (loot.type)

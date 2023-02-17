@@ -4,6 +4,7 @@ using Infrastructure.DI;
 using Infrastructure.DI.Services.Factory.Game;
 using Infrastructure.DI.Services.Factory.Ui;
 using Infrastructure.DI.Services.Game;
+using Infrastructure.DI.Services.StateService;
 using Infrastructure.States.Interfaces;
 using Ui;
 using IExitableState = Infrastructure.States.Interfaces.IExitableState;
@@ -28,7 +29,8 @@ namespace Infrastructure.States
                     container.Get<IUiFactory>(),
                     container.Get<IGameManager>(),
                     sceneLoader,
-                    loadingCurtain),
+                    loadingCurtain,
+                    container.Get<IGameStateService>()),
                 [typeof(GameLoopState)] = new GameLoopState(),
                 [typeof(LoadSceneState)] = new LoadSceneState(sceneLoader)
             };

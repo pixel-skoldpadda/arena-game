@@ -4,21 +4,76 @@ using UnityEngine;
 
 namespace Spawner
 {
-    // todo: Улучшить спавнеры
     public class EnemySpawner : MonoBehaviour
     {
-        private EnemyType _type;
         private IGameFactory _gameFactory;
-
-        public void Construct(IGameFactory gameFactory, EnemyType type)
+        private EnemyType _type;
+        private int _amount;
+        private float _cooldown;
+        private GameState _gameState;
+        
+        private float _spawnTime;
+        private bool _active;
+        
+        public void Construct(IGameFactory gameFactory, EnemyType type, int amount, float cooldown, GameState gameState)
         {
             _gameFactory = gameFactory;
             _type = type;
+            _amount = amount;
+            _cooldown = cooldown;
+            _gameState = gameState;
+
+            _gameState.OnGameResumed += Activate;
+            _gameState.OnGamePaused += Deactivate;
         }
 
-        public void SpawnEnemy()
+        private void Update()
         {
-            for (int i = 0; i < 10; i++)
+            if (!_active)
+            {
+                return;
+            }
+            
+            UpdateCooldown();
+        }
+
+        private void OnDestroy()
+        {
+            _gameState.OnGameResumed -= Activate;
+            _gameState.OnGameResumed -= Deactivate;
+        }
+
+        private void Deactivate()
+        {
+            _active = false;
+        }
+
+        private void Activate()
+        { 
+            _active = true;
+        }
+
+        private void UpdateCooldown()
+        {
+            if (!CooldownIsUp())
+            {
+                _spawnTime -= Time.deltaTime;
+            }
+            else
+            {
+                SpawnEnemy();
+                _spawnTime = _cooldown;
+            }
+        }
+        
+        private bool CooldownIsUp()
+        {
+            return _spawnTime <= 0f;
+        }
+        
+        private void SpawnEnemy()
+        {
+            for (int i = 0; i < _amount; i++)
             {
                 _gameFactory.CreateEnemy(_type, transform);   
             }

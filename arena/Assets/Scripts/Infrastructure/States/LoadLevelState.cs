@@ -2,6 +2,7 @@
 using Infrastructure.DI.Services.Factory.Game;
 using Infrastructure.DI.Services.Factory.Ui;
 using Infrastructure.DI.Services.Game;
+using Infrastructure.DI.Services.StateService;
 using Infrastructure.States.Interfaces;
 using Spawner;
 using Ui;
@@ -20,9 +21,10 @@ namespace Infrastructure.States
         private readonly SceneLoader _sceneLoader;
         private readonly LoadingCurtain _loadingCurtain;
         private readonly IGameManager _gameManager;
+        private readonly GameState _gameState;
         
         public LoadLevelState(GameStateMachine stateMachine, IGameFactory gameFactory, IUiFactory uiFactory, IGameManager gameManager, SceneLoader sceneLoader, 
-            LoadingCurtain loadingCurtain)
+            LoadingCurtain loadingCurtain, IGameStateService gameStateService)
         {
             _stateMachine = stateMachine;
             _gameFactory = gameFactory;
@@ -30,6 +32,7 @@ namespace Infrastructure.States
             _sceneLoader = sceneLoader;
             _loadingCurtain = loadingCurtain;
             _gameManager = gameManager;
+            _gameState = gameStateService.State;
         }
 
         public void Enter(string sceneName)
@@ -66,8 +69,7 @@ namespace Infrastructure.States
             {
                 SpawnerMarker spawnerMarker = marker.GetComponent<SpawnerMarker>();
                 EnemySpawner enemySpawner = _gameFactory.CreateSpawner(marker.transform.position).GetComponent<EnemySpawner>();
-                enemySpawner.Construct(_gameFactory, spawnerMarker.EnemyType);
-                enemySpawner.SpawnEnemy();
+                enemySpawner.Construct(_gameFactory, spawnerMarker.EnemyType, spawnerMarker.Amount, spawnerMarker.Cooldown, _gameState);
             }
         }
         

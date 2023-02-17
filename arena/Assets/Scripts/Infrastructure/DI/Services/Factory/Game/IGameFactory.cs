@@ -8,7 +8,7 @@ namespace Infrastructure.DI.Services.Factory.Game
     public interface IGameFactory : IService
     {
         GameObject CreatePlayer(Vector3 at);
-        GameObject CreateEnemy(EnemyType type, Transform parent);
+        void CreateEnemy(EnemyType type, Transform parent);
         GameObject CreateSpawner(Vector3 at);
         FloatingText CreateFloatingText(Transform parent);
         void CreateLoot(CountedLoot loot, Vector3 at);

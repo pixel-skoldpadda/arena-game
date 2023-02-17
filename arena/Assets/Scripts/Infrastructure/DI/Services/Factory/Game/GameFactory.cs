@@ -55,7 +55,7 @@ namespace Infrastructure.DI.Services.Factory.Game
             return _playerGameObject;
         }
 
-        public GameObject CreateEnemy(EnemyType type, Transform parent)
+        public void CreateEnemy(EnemyType type, Transform parent)
         {
             EnemyItem enemyItem = _items.ForEnemy(type);
             GameObject enemy = Object.Instantiate(enemyItem.prefab, parent.position, Quaternion.identity, parent);
@@ -76,8 +76,6 @@ namespace Infrastructure.DI.Services.Factory.Game
             health.MaxHp = enemyItem.health;
 
             enemy.GetComponent<EnemyDeath>().Construct(_gameState);
-
-            return enemy;
         }
 
         public FloatingText CreateFloatingText(Transform parent)

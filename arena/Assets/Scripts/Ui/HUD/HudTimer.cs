@@ -1,5 +1,4 @@
-﻿using System;
-using Infrastructure.DI.Services.StateService;
+﻿using Infrastructure.DI.Services.StateService;
 using TMPro;
 using UnityEngine;
 

@@ -7,14 +7,15 @@ namespace Spawner
     public class EnemySpawner : MonoBehaviour
     {
         private IGameFactory _gameFactory;
+        private GameState _gameState;
+        
         private EnemyType _type;
         private int _amount;
         private float _cooldown;
-        private GameState _gameState;
         
-        private float _spawnTime;
         private bool _active;
-        
+        private float _spawnTime;
+
         public void Construct(IGameFactory gameFactory, EnemyType type, int amount, float cooldown, GameState gameState)
         {
             _gameFactory = gameFactory;

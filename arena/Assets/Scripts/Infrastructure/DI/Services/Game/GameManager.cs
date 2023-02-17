@@ -5,9 +5,6 @@ using Infrastructure.DI.Services.Windows;
 
 namespace Infrastructure.DI.Services.Game
 {
-    /**
- * Класc, описывающий менеджер управления жизенным циклом игры
- */
     public class GameManager : IGameManager
     {
         private readonly GameState _gameState;
@@ -69,7 +66,7 @@ namespace Infrastructure.DI.Services.Game
         {
             _perksGenerator.Init();
             
-            _gameState.CurrentLevel = 0;
+            _gameState.CurrentLevel = 1;
             _gameState.NeedXp = _xpGenerator.GenerateNextLevelXp(_gameState.CurrentLevel);
             _gameState.IsGameRunning = false;
             

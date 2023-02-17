@@ -14,14 +14,14 @@ namespace Infrastructure.DI.Services.Factory.Ui
     public class UiFactory : IUiFactory
     {
         private Transform _uiRoot;
+        private Hud _hud;
 
         private readonly IAssetProvider _assets;
         private readonly IGameStateService _gameStateService;
         private readonly IItemsService _itemsService;
         private readonly IPerksGenerator _perksGenerator;
         private readonly IGameStateMachine _gameStateMachine;
-        private Hud _hud;
-        
+
         public UiFactory(IAssetProvider assets, IGameStateService gameStateService, IItemsService itemsService, IPerksGenerator perksGenerator,
             IGameStateMachine gameStateMachine)
         {

@@ -7,11 +7,22 @@ using Items.Perks;
 public class GameState
 {
     private int _coins;
-    private int _deathCount;
-    private int _currentLevel;
     private int _currentXp;
+    private int _deathCount;
+    
+    private int _currentLevel;
     private int _needXp;
-        
+    
+    private Dictionary<Type, Perk> _activePerks = new();
+
+    private bool _isGameRunning;
+
+    private float _musicVolume = .5f;
+    private float _effectsVolume = .5f;
+    
+    private Action _onGamePaused;
+    private Action _onGameResumed;
+    
     private Action _coinsChanged;
     private Action _deathCountChanged;
     
@@ -20,20 +31,6 @@ public class GameState
 
     private Action<Perk> _onNewPerkAdded;
     private Action<int> _onHealthAdded;
-    
-    private Dictionary<Type, Perk> _activePerks = new();
-
-    private bool _isGameRunning;
-    private Action _onGamePaused;
-    private Action _onGameResumed;
-
-    private float _musicVolume = .5f;
-    private float _effectsVolume = .5f;
-    
-    public void IncrementDeathCounter()
-    {
-        DeathCount++;
-    }
 
     public void AddPerk(Perk perk)
     {
@@ -46,6 +43,11 @@ public class GameState
         return _activePerks.TryGetValue(typeof(TPerk), out var perk) ? perk as TPerk: null;
     }
 
+    public void IncrementDeathCounter()
+    {
+        DeathCount++;
+    }
+    
     public void Reset()
     {
         _activePerks.Clear();
@@ -53,6 +55,24 @@ public class GameState
         _currentLevel = 0;
         _currentXp = 0;
         _needXp = 0;
+    }
+    
+    public void AddLoot(CountedLoot loot)
+    {
+        switch (loot.type)
+        {
+            case LootType.XpSmall:
+            case LootType.XpBig:
+                CurrentXp += loot.count;
+                break;
+            case LootType.HealthSmall:
+            case LootType.HealthBig:
+                OnHealthAdded.Invoke(loot.count);
+                break;
+            case LootType.Coins:
+                Coins += loot.count;
+                break;
+        }
     }
     
     public Action CoinsChanged
@@ -176,23 +196,5 @@ public class GameState
     {
         get => _effectsVolume;
         set => _effectsVolume = value;
-    }
-
-    public void AddLoot(CountedLoot loot)
-    {
-        switch (loot.type)
-        {
-            case LootType.XpSmall:
-            case LootType.XpBig:
-                CurrentXp += loot.count;
-                break;
-            case LootType.HealthSmall:
-            case LootType.HealthBig:
-                OnHealthAdded.Invoke(loot.count);
-                break;
-            case LootType.Coins:
-                Coins += loot.count;
-                break;
-        }
     }
 }

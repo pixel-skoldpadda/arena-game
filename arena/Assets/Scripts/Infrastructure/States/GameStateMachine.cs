@@ -8,7 +8,6 @@ using Infrastructure.DI.Services.Items;
 using Infrastructure.DI.Services.StateService;
 using Infrastructure.States.Interfaces;
 using Ui;
-using IExitableState = Infrastructure.States.Interfaces.IExitableState;
 
 namespace Infrastructure.States
 {

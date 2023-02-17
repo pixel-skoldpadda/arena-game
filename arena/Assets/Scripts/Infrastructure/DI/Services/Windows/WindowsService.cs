@@ -1,4 +1,6 @@
 ﻿using Infrastructure.DI.Services.Factory.Ui;
+using Ui.HUD;
+using Window = Ui.Windows.Window;
 
 namespace Infrastructure.DI.Services.Windows
 {
@@ -13,14 +15,26 @@ namespace Infrastructure.DI.Services.Windows
         
         public void Open(WindowType type)
         {
-            if (type == WindowType.Perks)
+            Window window = CreateWindow(type);
+            if (window == null)
             {
-                _uiFactory.CreatePerksWindow();
+                return;
             }
-            else if (type == WindowType.Death)
+            
+            Hud hud = _uiFactory.HUD;
+            hud.Disable();
+            window.OnWindowClosed += hud.Enable;
+        }
+
+        private Window CreateWindow(WindowType type)
+        {
+            return type switch
             {
-                _uiFactory.CreateDeathWindow();
-            }
+                WindowType.Perks => _uiFactory.CreatePerksWindow(),
+                WindowType.Death => _uiFactory.CreateDeathWindow(),
+                WindowType.Pause => _uiFactory.CreatePauseWindow(),
+                _ => null
+            };
         }
     }
 }

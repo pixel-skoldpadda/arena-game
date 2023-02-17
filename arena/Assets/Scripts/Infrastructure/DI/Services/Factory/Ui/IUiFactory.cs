@@ -1,12 +1,15 @@
-﻿using UnityEngine;
+﻿using Ui.HUD;
+using Ui.Windows;
 
 namespace Infrastructure.DI.Services.Factory.Ui
 {
     public interface IUiFactory : IService
     {
-        GameObject CreateHud();
+        void CreateHud();
         void CreateUiRoot();
-        void CreatePerksWindow();
-        void CreateDeathWindow();
+        PerksWindow CreatePerksWindow();
+        DeathWindow CreateDeathWindow();
+        PauseWindow CreatePauseWindow();
+        Hud HUD { get; }
     }
 }

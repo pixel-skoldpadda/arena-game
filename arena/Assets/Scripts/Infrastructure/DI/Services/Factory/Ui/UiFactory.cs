@@ -20,7 +20,8 @@ namespace Infrastructure.DI.Services.Factory.Ui
         private readonly IItemsService _itemsService;
         private readonly IPerksGenerator _perksGenerator;
         private readonly IGameStateMachine _gameStateMachine;
-
+        private Hud _hud;
+        
         public UiFactory(IAssetProvider assets, IGameStateService gameStateService, IItemsService itemsService, IPerksGenerator perksGenerator,
             IGameStateMachine gameStateMachine)
         {
@@ -37,32 +38,48 @@ namespace Infrastructure.DI.Services.Factory.Ui
             _uiRoot = uiRoot.transform;
         }
         
-        public GameObject CreateHud()
+        public void CreateHud()
         {
             GameObject hudGameObject = _assets.Instantiate(AssetsPath.HudPrefabPath);
-            Hud hud = hudGameObject.GetComponent<Hud>();
+            _hud = hudGameObject.GetComponent<Hud>();
 
-            hud.DeathContainer.Construct(_gameStateService);
-            hud.CoinsContainer.Construct(_gameStateService);
-            hud.LevelProgressBar.Construct(_gameStateService);
-            hud.HudTimer.Construct(_gameStateService);
-            hud.ActivePerksContainer.Construct(_gameStateService);
+            _hud.DeathContainer.Construct(_gameStateService);
+            _hud.CoinsContainer.Construct(_gameStateService);
+            _hud.LevelProgressBar.Construct(_gameStateService);
+            _hud.HudTimer.Construct(_gameStateService);
+            _hud.ActivePerksContainer.Construct(_gameStateService);
+            _hud.PauseGameButton.Construct(_gameStateService);
             
             return hudGameObject;
         }
 
-        public void CreatePerksWindow()
+        public PerksWindow CreatePerksWindow()
         {
             WindowItem windowItem = _itemsService.ForWindow(WindowType.Perks);
             PerksWindow perksWindow = Object.Instantiate(windowItem.windowPrefab, _uiRoot).GetComponent<PerksWindow>();
             perksWindow.Construct(_gameStateService, _perksGenerator);
+
+            return perksWindow;
         }
 
-        public void CreateDeathWindow()
+        public DeathWindow CreateDeathWindow()
         {
             WindowItem windowItem = _itemsService.ForWindow(WindowType.Death);
             DeathWindow deathWindow = Object.Instantiate(windowItem.windowPrefab, _uiRoot).GetComponent<DeathWindow>();
             deathWindow.Construct(_gameStateMachine);
+
+            return deathWindow;
         }
+
+        public PauseWindow CreatePauseWindow()
+        {
+            WindowItem windowItem = _itemsService.ForWindow(WindowType.Pause);
+            PauseWindow pauseWindow = Object.Instantiate(windowItem.windowPrefab, _uiRoot).GetComponent<PauseWindow>();
+            pauseWindow.Construct(_gameStateService, _gameStateMachine);
+
+            return pauseWindow;
+        }
+
+        public Hud HUD => _hud;
     }
 }

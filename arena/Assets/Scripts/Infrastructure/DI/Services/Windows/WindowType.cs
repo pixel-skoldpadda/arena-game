@@ -3,6 +3,7 @@
     public enum WindowType
     {
         Perks,
-        Death
+        Death, 
+        Pause
     }
 }

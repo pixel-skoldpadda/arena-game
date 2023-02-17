@@ -9,11 +9,23 @@ namespace Ui.HUD
         [SerializeField] private LevelProgressBar levelProgressBar;
         [SerializeField] private HudTimer hudTimer;
         [SerializeField] private ActivePerksContainer activePerksContainer;
+        [SerializeField] private PauseGameButton pauseGameButton;
 
         public DeathContainer DeathContainer => deathContainer;
         public CoinsContainer CoinsContainer => coinsContainer;
         public LevelProgressBar LevelProgressBar => levelProgressBar;
         public HudTimer HudTimer => hudTimer;
         public ActivePerksContainer ActivePerksContainer => activePerksContainer;
+        public PauseGameButton PauseGameButton => pauseGameButton;
+
+        public void Disable()
+        {
+            pauseGameButton.Disable();
+        }
+
+        public void Enable()
+        {
+            pauseGameButton.Enable();
+        }
     }
 }

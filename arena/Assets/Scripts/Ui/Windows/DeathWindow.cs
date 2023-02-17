@@ -1,9 +1,8 @@
 ﻿using Infrastructure.States;
-using UnityEngine;
 
 namespace Ui.Windows
 {
-    public class DeathWindow : MonoBehaviour
+    public class DeathWindow : Window
     {
         private IGameStateMachine _gameStateMachine;
         

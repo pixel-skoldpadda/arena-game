@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Ui.Windows
 {
-    public class PerksWindow : MonoBehaviour
+    public class PerksWindow : Window
     {
         [SerializeField] private GameObject girdItemPrefab;
         [SerializeField] private GameObject grid;
@@ -39,11 +39,6 @@ namespace Ui.Windows
             _gameState.AddPerk(perk);
             Close();
             
-        }
-        
-        private void Close()
-        {
-            Destroy(gameObject);
         }
     }
 }

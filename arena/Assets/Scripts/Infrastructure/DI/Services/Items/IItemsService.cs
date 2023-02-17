@@ -13,7 +13,6 @@ namespace Infrastructure.DI.Services.Items
         EnemyItem ForEnemy(EnemyType type);
         CharacterItem CharacterItem { get; }
         List<Perk> AllPerks { get; }
-        Spawners Spawners { get; }
         WindowItem ForWindow(WindowType type);
         CountedLoot ForLoot(LootType type);
     }

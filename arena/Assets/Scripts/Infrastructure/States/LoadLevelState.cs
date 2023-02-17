@@ -68,11 +68,12 @@ namespace Infrastructure.States
 
         private void CreateSpawners()
         {
-            List<SpawnerData> spawnerData = _items.Spawners.SpawnersData;
-            foreach (SpawnerData data in spawnerData)
+            GameObject[] markers = GameObject.FindGameObjectsWithTag("Spawner");
+            foreach (GameObject marker in markers)
             {
-                EnemySpawner enemySpawner = _gameFactory.CreateSpawner(data.Position).GetComponent<EnemySpawner>();
-                enemySpawner.Construct(_gameFactory, data.EnemyType, data.Amount, data.Cooldown, _gameState);
+                SpawnerMarker spawnerMarker = marker.GetComponent<SpawnerMarker>();
+                EnemySpawner enemySpawner = _gameFactory.CreateSpawner(marker.transform.position).GetComponent<EnemySpawner>();
+                enemySpawner.Construct(_gameFactory, spawnerMarker.EnemyType, spawnerMarker.Amount, spawnerMarker.Cooldown, _gameState);
             }
         }
         

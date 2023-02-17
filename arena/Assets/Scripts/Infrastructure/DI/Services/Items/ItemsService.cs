@@ -16,13 +16,11 @@ namespace Infrastructure.DI.Services.Items
         private const string PerkItemsPath = "Items/Perks";
         private const string LootItemsPath = "Items/Loot";
         private const string WindowsItemsPath = "Items/Windows";
-        private const string SpawnerItemPath = "Items/Spawners";
 
         private Dictionary<EnemyType, EnemyItem> _enemies;
         private Dictionary<WindowType, WindowItem> _windowItems;
         private Dictionary<LootType, CountedLoot> _loots;
-
-        private Spawners _spawners;
+        
         private CharacterItem _characterItem;
         private List<Perk> _allPerks;
         
@@ -40,7 +38,6 @@ namespace Infrastructure.DI.Services.Items
             _allPerks = Resources.LoadAll<Perk>(PerkItemsPath).ToList();
 
             _characterItem = Resources.Load<CharacterItem>(PlayerItemsPath);
-            _spawners = Resources.Load<Spawners>(SpawnerItemPath);
         }
         
         public EnemyItem ForEnemy(EnemyType type)
@@ -60,6 +57,5 @@ namespace Infrastructure.DI.Services.Items
 
         public CharacterItem CharacterItem => _characterItem;
         public List<Perk> AllPerks => _allPerks;
-        public Spawners Spawners => _spawners;
     }
 }

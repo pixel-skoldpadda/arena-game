@@ -12,7 +12,7 @@ namespace Infrastructure.DI.Services.Items
     public class ItemsService : IItemsService
     {
         private const string EnemyItemsPath = "Items/Enemies";
-        private const string CharactersItemsPath = "Items/Characters/Player";
+        private const string PlayerItemsPath = "Items/Player/Player";
         private const string PerkItemsPath = "Items/Perks";
         private const string LootItemsPath = "Items/Loot";
         private const string WindowsItemsPath = "Items/Windows";
@@ -39,7 +39,7 @@ namespace Infrastructure.DI.Services.Items
 
             _allPerks = Resources.LoadAll<Perk>(PerkItemsPath).ToList();
 
-            _characterItem = Resources.Load<CharacterItem>(CharactersItemsPath);
+            _characterItem = Resources.Load<CharacterItem>(PlayerItemsPath);
             _spawners = Resources.Load<Spawners>(SpawnerItemPath);
         }
         

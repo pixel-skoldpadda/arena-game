@@ -51,6 +51,7 @@ namespace Ui.Windows
 
         public void OnQuitButtonPressed(string sceneName)
         {
+            _gameState.Reset();
             _gameStateMachine.Enter<LoadSceneState, string>(sceneName);
             Close();
         }

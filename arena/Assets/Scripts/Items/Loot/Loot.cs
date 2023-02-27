@@ -4,7 +4,11 @@ namespace Items.Loot
 {
     public abstract class Loot : ScriptableObject
     {
-        public LootType type;
-        public GameObject prefab;
+        [SerializeField] protected LootType type;
+        [SerializeField] protected GameObject prefab;
+
+        public LootType Type => type;
+
+        public GameObject Prefab => prefab;
     }
 }

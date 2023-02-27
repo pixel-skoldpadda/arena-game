@@ -6,6 +6,8 @@ namespace Items.Perks
     public class AttackCooldownPerk : Perk
     {
         [Range(.1f, .5f)]
-        public float cooldownAmount;
+        [SerializeField] private float cooldownAmount;
+
+        public float CooldownAmount => cooldownAmount;
     }
 }

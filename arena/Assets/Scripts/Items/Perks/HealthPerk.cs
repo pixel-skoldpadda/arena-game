@@ -6,6 +6,8 @@ namespace Items.Perks
     public class HealthPerk : Perk
     {
         [Range(5, 100)]
-        public int healthAmount;
+        [SerializeField] private int healthAmount;
+
+        public int HealthAmount => healthAmount;
     }
 }

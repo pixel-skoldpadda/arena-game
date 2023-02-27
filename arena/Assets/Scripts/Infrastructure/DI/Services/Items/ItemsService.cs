@@ -27,13 +27,13 @@ namespace Infrastructure.DI.Services.Items
         public void LoadItems()
         {
             _enemies = Resources.LoadAll<EnemyItem>(EnemyItemsPath)
-                .ToDictionary(k => k.type, v => v);
+                .ToDictionary(k => k.Type, v => v);
             
             _windowItems = Resources.LoadAll<WindowItem>(WindowsItemsPath)
-                .ToDictionary(k => k.type, v => v);
+                .ToDictionary(k => k.Type, v => v);
 
             _loots = Resources.LoadAll<CountedLoot>(LootItemsPath)
-                .ToDictionary(k => k.type, v => v);
+                .ToDictionary(k => k.Type, v => v);
 
             _allPerks = Resources.LoadAll<Perk>(PerkItemsPath).ToList();
 

@@ -6,6 +6,8 @@ namespace Items.Perks
     public class DamageRadiusPerk : Perk
     {
         [Range(.01f, .05f)]
-        public float radiusAmount;
+        [SerializeField] private float radiusAmount;
+
+        public float RadiusAmount => radiusAmount;
     }
 }

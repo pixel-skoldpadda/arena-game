@@ -6,6 +6,8 @@ namespace Items.Perks
     public class SpeedPerk : Perk
     {
         [Range(.1f, 3)]
-        public float speedAmount;
+        [SerializeField] private float speedAmount;
+
+        public float SpeedAmount => speedAmount;
     }
 }

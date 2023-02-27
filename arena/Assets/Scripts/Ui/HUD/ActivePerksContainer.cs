@@ -24,7 +24,7 @@ namespace Ui.HUD
 
         private void AddNewPerk(Perk perk)
         {
-            Instantiate(gridItemPrefab, gridTransform).GetComponent<ActivePerk>().SetIcon(perk.icon);
+            Instantiate(gridItemPrefab, gridTransform).GetComponent<ActivePerk>().SetIcon(perk.Icon);
         }
     }
 }

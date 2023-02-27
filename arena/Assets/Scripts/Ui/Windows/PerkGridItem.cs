@@ -22,9 +22,9 @@ namespace Ui.Windows
         public void Init(Perk perk)
         {
             _currentPerk = perk;
-            icon.sprite = _currentPerk.icon;
-            perkName.text = _currentPerk.perkName;
-            perkDescription.text = _currentPerk.description;
+            icon.sprite = _currentPerk.Icon;
+            perkName.text = _currentPerk.PerkName;
+            perkDescription.text = _currentPerk.Description;
         }
 
         public void OnTakeButtonPressed()

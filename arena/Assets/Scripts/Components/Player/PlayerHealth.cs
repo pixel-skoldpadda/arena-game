@@ -52,7 +52,7 @@ namespace Components.Player
             get
             {
                 HealthPerk healthPerk = _gameState.GetPerk<HealthPerk>();
-                return healthPerk != null ? _maxHp + healthPerk.healthAmount : _maxHp;
+                return healthPerk != null ? _maxHp + healthPerk.HealthAmount : _maxHp;
             }
         }
 

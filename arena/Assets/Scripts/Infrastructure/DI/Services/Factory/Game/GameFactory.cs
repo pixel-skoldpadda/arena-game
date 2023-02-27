@@ -33,21 +33,21 @@ namespace Infrastructure.DI.Services.Factory.Game
         public GameObject CreatePlayer(Vector3 at)
         {
             CharacterItem characterItem = _items.CharacterItem;
-            _playerGameObject = Object.Instantiate(characterItem.prefab, at, Quaternion.identity);
+            _playerGameObject = Object.Instantiate(characterItem.Prefab, at, Quaternion.identity);
 
             PlayerMovement playerMovement = _playerGameObject.GetComponent<PlayerMovement>();
             playerMovement.Construct(_gameState);
-            playerMovement.Speed = characterItem.speed;
+            playerMovement.Speed = characterItem.Speed;
 
             PlayerAttack attack = _playerGameObject.GetComponent<PlayerAttack>();
             attack.Construct(_gameState);
-            attack.AttackCooldown = characterItem.attackCooldown;
-            attack.AttackRadius = characterItem.attackRadius;
-            attack.Damage = characterItem.damage;
+            attack.AttackCooldown = characterItem.AttackCooldown;
+            attack.AttackRadius = characterItem.AttackRadius;
+            attack.Damage = characterItem.Damage;
 
             IHealth health = _playerGameObject.GetComponent<IHealth>();
             ((PlayerHealth) health).Construct(_gameState);
-            health.MaxHp = characterItem.health;
+            health.MaxHp = characterItem.Health;
 
             PlayerDeath playerDeath = _playerGameObject.GetComponent<PlayerDeath>();
             playerDeath.OnDie += _gameManager.OnPLayerDie;
@@ -58,22 +58,22 @@ namespace Infrastructure.DI.Services.Factory.Game
         public void CreateEnemy(EnemyType type, Transform parent)
         {
             EnemyItem enemyItem = _items.ForEnemy(type);
-            GameObject enemy = Object.Instantiate(enemyItem.prefab, parent.position, Quaternion.identity, parent);
+            GameObject enemy = Object.Instantiate(enemyItem.Prefab, parent.position, Quaternion.identity, parent);
 
             EnemyMovement enemyMovement = enemy.GetComponent<EnemyMovement>();
             enemyMovement.Construct(_playerGameObject.transform, _gameState);
-            enemyMovement.Speed = enemyItem.speed;
+            enemyMovement.Speed = enemyItem.Speed;
 
             Attack attack = enemy.GetComponent<Attack>();
-            attack.AttackCooldown = enemyItem.attackCooldown;
-            attack.AttackRadius = enemyItem.attackRadius;
-            attack.Damage = enemyItem.damage;
+            attack.AttackCooldown = enemyItem.AttackCooldown;
+            attack.AttackRadius = enemyItem.AttackRadius;
+            attack.Damage = enemyItem.Damage;
 
             enemy.GetComponent<LootSpawner>().Construct(_items, this);
             
             EnemyHealth health = enemy.GetComponent<EnemyHealth>();
             health.Construct(this);
-            health.MaxHp = enemyItem.health;
+            health.MaxHp = enemyItem.Health;
 
             enemy.GetComponent<EnemyDeath>().Construct(_gameState);
         }
@@ -91,7 +91,7 @@ namespace Infrastructure.DI.Services.Factory.Game
 
         public void CreateLoot(CountedLoot loot, Vector3 at)
         {
-            LootPiece lootPiece = Object.Instantiate(loot.prefab, at, Quaternion.identity).GetComponent<LootPiece>();
+            LootPiece lootPiece = Object.Instantiate(loot.Prefab, at, Quaternion.identity).GetComponent<LootPiece>();
             lootPiece.Construct(_gameState, loot);
         }
     }

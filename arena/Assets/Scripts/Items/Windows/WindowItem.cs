@@ -6,7 +6,11 @@ namespace Items.Windows
     [CreateAssetMenu(fileName = "WindowItem", menuName = "Items/Windows/WindowItem")]
     public class WindowItem : ScriptableObject
     {
-        public WindowType type;
-        public GameObject windowPrefab;
+        [SerializeField] private WindowType type;
+        [SerializeField] private GameObject windowPrefab;
+
+        public WindowType Type => type;
+
+        public GameObject WindowPrefab => windowPrefab;
     }
 }

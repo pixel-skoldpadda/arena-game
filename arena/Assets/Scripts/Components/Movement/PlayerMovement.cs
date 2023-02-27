@@ -25,7 +25,7 @@ namespace Components.Movement
             get
             {
                 SpeedPerk speedPerk = GameState.GetPerk<SpeedPerk>();
-                return speedPerk != null ? CurrentSpeed + speedPerk.speedAmount : CurrentSpeed;
+                return speedPerk != null ? CurrentSpeed + speedPerk.SpeedAmount : CurrentSpeed;
             }
         }
     }

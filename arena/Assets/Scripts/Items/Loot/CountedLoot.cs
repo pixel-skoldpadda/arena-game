@@ -5,6 +5,8 @@ namespace Items.Loot
     [CreateAssetMenu(fileName = "CountedLoot", menuName = "Items/CountedLoot", order = 0)]
     public class CountedLoot : Loot
     {
-        public int count;
+        [SerializeField] private int count;
+
+        public int Count => count;
     }
 }

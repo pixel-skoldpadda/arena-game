@@ -54,7 +54,7 @@ namespace Infrastructure.DI.Services.Factory.Ui
         public PerksWindow CreatePerksWindow()
         {
             WindowItem windowItem = _itemsService.ForWindow(WindowType.Perks);
-            PerksWindow perksWindow = Object.Instantiate(windowItem.windowPrefab, _uiRoot).GetComponent<PerksWindow>();
+            PerksWindow perksWindow = Object.Instantiate(windowItem.WindowPrefab, _uiRoot).GetComponent<PerksWindow>();
             perksWindow.Construct(_gameStateService, _perksGenerator);
 
             return perksWindow;
@@ -63,7 +63,7 @@ namespace Infrastructure.DI.Services.Factory.Ui
         public DeathWindow CreateDeathWindow()
         {
             WindowItem windowItem = _itemsService.ForWindow(WindowType.Death);
-            DeathWindow deathWindow = Object.Instantiate(windowItem.windowPrefab, _uiRoot).GetComponent<DeathWindow>();
+            DeathWindow deathWindow = Object.Instantiate(windowItem.WindowPrefab, _uiRoot).GetComponent<DeathWindow>();
             deathWindow.Construct(_gameStateMachine);
 
             return deathWindow;
@@ -72,7 +72,7 @@ namespace Infrastructure.DI.Services.Factory.Ui
         public PauseWindow CreatePauseWindow()
         {
             WindowItem windowItem = _itemsService.ForWindow(WindowType.Pause);
-            PauseWindow pauseWindow = Object.Instantiate(windowItem.windowPrefab, _uiRoot).GetComponent<PauseWindow>();
+            PauseWindow pauseWindow = Object.Instantiate(windowItem.WindowPrefab, _uiRoot).GetComponent<PauseWindow>();
             pauseWindow.Construct(_gameStateService, _gameStateMachine);
 
             return pauseWindow;

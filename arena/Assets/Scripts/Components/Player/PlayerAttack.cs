@@ -17,7 +17,7 @@ namespace Components.Player
             get
             {
                 DamagePerk damagePerk = _gameState.GetPerk<DamagePerk>();
-                return damagePerk != null ? CurrentDamage + damagePerk.damageAmount : CurrentDamage;
+                return damagePerk != null ? CurrentDamage + damagePerk.DamageAmount : CurrentDamage;
             }
         }
 
@@ -27,7 +27,7 @@ namespace Components.Player
             get
             {
                 DamageRadiusPerk damageRadiusPerk = _gameState?.GetPerk<DamageRadiusPerk>();
-                return damageRadiusPerk != null ? CurrentAttackRadius + damageRadiusPerk.radiusAmount : CurrentAttackRadius;
+                return damageRadiusPerk != null ? CurrentAttackRadius + damageRadiusPerk.RadiusAmount : CurrentAttackRadius;
             }
         }
 
@@ -41,7 +41,7 @@ namespace Components.Player
             get
             {
                 AttackCooldownPerk cooldownPerk = _gameState.GetPerk<AttackCooldownPerk>();
-                return cooldownPerk != null ? CurrentAttackCooldown - cooldownPerk.cooldownAmount : CurrentAttackCooldown;
+                return cooldownPerk != null ? CurrentAttackCooldown - cooldownPerk.CooldownAmount : CurrentAttackCooldown;
             }
         }
     }

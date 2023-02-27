@@ -6,6 +6,8 @@ namespace Items.Perks
     public class DamagePerk : Perk
     {
         [Range(1, 50)]
-        public int damageAmount;
+        [SerializeField] private int damageAmount;
+
+        public int DamageAmount => damageAmount;
     }
 }

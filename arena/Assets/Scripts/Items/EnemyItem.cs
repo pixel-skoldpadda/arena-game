@@ -5,23 +5,37 @@ namespace Items
     [CreateAssetMenu(fileName = "Enemy", menuName = "Items/Enemy", order = 0)]
     public class EnemyItem : ScriptableObject
     {
-        public EnemyType type;
+        [SerializeField] private EnemyType type;
         
-        public GameObject prefab;
+        [SerializeField] private GameObject prefab;
         
         [Range(1, 500)]
-        public int health;
+        [SerializeField] private int health;
         
         [Range(1, 100)]
-        public int damage;
+        [SerializeField] private int damage;
 
         [Range(1f, 10f)]
-        public float attackCooldown;
+        [SerializeField] private float attackCooldown;
 
-        [Range(.1f, 1f)]
-        public float attackRadius;
+        [Range(.1f, 1f)] 
+        [SerializeField] private float attackRadius;
         
         [Range(.5f, 5f)]
-        public float speed;
+        [SerializeField] private float speed;
+
+        public EnemyType Type => type;
+
+        public GameObject Prefab => prefab;
+
+        public int Health => health;
+
+        public int Damage => damage;
+
+        public float AttackCooldown => attackCooldown;
+
+        public float AttackRadius => attackRadius;
+
+        public float Speed => speed;
     }
 }

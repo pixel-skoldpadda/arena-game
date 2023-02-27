@@ -59,18 +59,18 @@ public class GameState
     
     public void AddLoot(CountedLoot loot)
     {
-        switch (loot.type)
+        switch (loot.Type)
         {
             case LootType.XpSmall:
             case LootType.XpBig:
-                CurrentXp += loot.count;
+                CurrentXp += loot.Count;
                 break;
             case LootType.HealthSmall:
             case LootType.HealthBig:
-                OnHealthAdded.Invoke(loot.count);
+                OnHealthAdded.Invoke(loot.Count);
                 break;
             case LootType.Coins:
-                Coins += loot.count;
+                Coins += loot.Count;
                 break;
         }
     }

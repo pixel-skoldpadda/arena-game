@@ -5,6 +5,7 @@ using Components.Movement;
 using Components.Player;
 using Infrastructure.DI.Services.AssetsManagement;
 using Infrastructure.DI.Services.Game;
+using Infrastructure.DI.Services.Input;
 using Infrastructure.DI.Services.Items;
 using Infrastructure.DI.Services.StateService;
 using Items;
@@ -19,15 +20,17 @@ namespace Infrastructure.DI.Services.Factory.Game
         private readonly IItemsService _items;
         private readonly GameState _gameState;
         private readonly IGameManager _gameManager;
+        private readonly IInputService _input;
 
         private GameObject _playerGameObject;
         
-        public GameFactory(IAssetProvider assets, IItemsService items, IGameStateService gameStateService, IGameManager gameManager)
+        public GameFactory(IAssetProvider assets, IItemsService items, IGameStateService gameStateService, IGameManager gameManager, IInputService input)
         {
             _assets = assets;
             _items = items;
             _gameState = gameStateService.State;
             _gameManager = gameManager;
+            _input = input;
         }
 
         public GameObject CreatePlayer(Vector3 at)
@@ -36,7 +39,7 @@ namespace Infrastructure.DI.Services.Factory.Game
             _playerGameObject = Object.Instantiate(characterItem.Prefab, at, Quaternion.identity);
 
             PlayerMovement playerMovement = _playerGameObject.GetComponent<PlayerMovement>();
-            playerMovement.Construct(_gameState);
+            playerMovement.Construct(_gameState, _input);
             playerMovement.Speed = characterItem.Speed;
 
             PlayerAttack attack = _playerGameObject.GetComponent<PlayerAttack>();

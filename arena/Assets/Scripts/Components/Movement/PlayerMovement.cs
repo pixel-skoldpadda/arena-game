@@ -1,5 +1,4 @@
-﻿using Infrastructure.DI;
-using Infrastructure.DI.Services.Input;
+﻿using Infrastructure.DI.Services.Input;
 using Items.Perks;
 using UnityEngine;
 
@@ -9,11 +8,13 @@ namespace Components.Movement
     {
         private IInputService _inputService;
 
-        private void Awake()
+        public void Construct(GameState gameState, IInputService inputService)
         {
-            _inputService = DiContainer.Container.Get<IInputService>();
+            base.Construct(gameState);
+
+            _inputService = inputService;
         }
-        
+
         protected override Vector2 GetAxis()
         {
             return _inputService.Axis;

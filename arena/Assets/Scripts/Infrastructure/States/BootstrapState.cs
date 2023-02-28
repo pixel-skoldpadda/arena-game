@@ -59,8 +59,9 @@ namespace Infrastructure.States
             IItemsService itemsService = new ItemsService();
             itemsService.LoadItems();
             _container.Bind(itemsService);
-            
-            _container.Bind<IInputService>(new InputService());
+
+            IInputService inputService = new InputService();
+            _container.Bind(inputService);
             
             IAssetProvider assetsProvider = new AssetsProvider();
             _container.Bind(assetsProvider);
@@ -81,7 +82,8 @@ namespace Infrastructure.States
                 assetsProvider, 
                 itemsService, 
                 gameStateService, 
-                gameManager));
+                gameManager,
+                inputService));
         }
     }
 }
